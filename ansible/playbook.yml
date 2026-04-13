@@ -1,0 +1,97 @@
+---
+- name: Provision DigitSahelCloud EC2
+  hosts: production
+  become: yes
+  vars:
+    app_dir: /var/www/digitsahelcloud
+    repo_url: https://github.com/bacho92/website-digitsahelcloud.git
+
+  tasks:
+
+    - name: Mise à jour système
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Installer dépendances
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - git
+          - ufw
+        state: present
+
+    - name: Installer Docker
+      shell: |
+        curl -fsSL https://get.docker.com | sh
+      args:
+        creates: /usr/bin/docker
+
+    - name: Installer Docker Compose
+      shell: |
+        curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        chmod +x /usr/local/bin/docker-compose
+      args:
+        creates: /usr/local/bin/docker-compose
+
+    - name: Ajouter ubuntu au groupe docker
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Configurer UFW — autoriser SSH
+      ufw:
+        rule: allow
+        port: 22
+
+    - name: Configurer UFW — autoriser HTTP
+      ufw:
+        rule: allow
+        port: 80
+
+    - name: Configurer UFW — autoriser HTTPS
+      ufw:
+        rule: allow
+        port: 443
+
+    - name: Activer UFW
+      ufw:
+        state: enabled
+
+    - name: Créer dossier application
+      file:
+        path: "{{ app_dir }}"
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Cloner le repository
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ app_dir }}"
+        version: main
+        force: yes
+      become_user: ubuntu
+
+    - name: Copier .env production
+      copy:
+        src: .env.production
+        dest: "{{ app_dir }}/.env"
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Lancer Docker Compose
+      shell: |
+        cd {{ app_dir }}
+        docker-compose up -d --build
+      become_user: ubuntu
+
+    - name: Migrations Laravel
+      shell: |
+        cd {{ app_dir }}
+        docker-compose exec -T app php artisan migrate --force
+      become_user: ubuntu
