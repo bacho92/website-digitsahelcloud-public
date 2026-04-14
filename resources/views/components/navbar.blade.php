@@ -2,8 +2,8 @@
 .nav-link {
     text-decoration: none;
     font-weight: 600;
-    font-size: 14px;
-    padding: 8px 16px;
+    font-size: 15px;
+    padding: 10px 18px;
     border-radius: 8px;
     transition: all .2s;
     color: #1F2937;
@@ -74,7 +74,7 @@
     <div style="max-width:1280px; margin:0 auto;">
 
         {{-- Barre principale --}}
-        <div style="height:80px; display:flex;
+        <div style="height:100px; display:flex;
                     justify-content:space-between; align-items:center;">
 
             {{-- Logo --}}
@@ -83,7 +83,7 @@
                       align-items:center; flex-shrink:0;">
                 <img src="{{ asset('images/dsc-logo.jpeg') }}"
                      alt="DigitSahelCloud"
-                     style="height:60px; width:auto; object-fit:contain;">
+                     style="height:90px; width:auto; object-fit:contain;">
             </a>
 
             {{-- Liens desktop --}}

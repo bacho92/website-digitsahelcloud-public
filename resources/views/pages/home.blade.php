@@ -52,11 +52,11 @@
                 <a href="{{ route('services') }}" class="btn-primary">
                     Découvrir nos services
                 </a>
-                <a href="Tel :+22770810113"
+                <a href="tel:+22790065023"
                    style="display:inline-block; background:rgba(255,255,255,.1);
-                          border:2px solid rgba(255,255,255,.3); color:white;
-                          font-weight:600; padding:12px 24px; border-radius:12px;
-                          text-decoration:none; transition:all .2s;">
+                    border:2px solid rgba(255,255,255,.3); color:white;
+                    font-weight:600; padding:12px 24px; border-radius:12px;
+                    text-decoration:none; transition:all .2s;">
                     📞 Parler à un expert →
                 </a>
             </div>

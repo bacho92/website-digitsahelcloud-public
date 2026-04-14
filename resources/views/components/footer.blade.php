@@ -180,13 +180,6 @@
                 <span style="color:#1E388A; font-weight:700;">Cloud</span>
                 <span style="color:#6B7280;">. Tous droits réservés.</span>
             </p>
-            <p style="font-size:12px; color:#9CA3AF;">
-                Construit avec
-                <span style="color:#F97316; font-weight:700;">Laravel 12</span>
-                ·
-                <span style="color:#1E388A; font-weight:700;">Hébergé sur AWS</span>
-                · Niamey 🇳🇪
-            </p>
         </div>
     </div>
 
