@@ -61,12 +61,12 @@
                     </a>
                     @endforeach
                 </div>
-                <a href="tel:+22790065023"
+                <a href="tel:+22770810113"
                    style="display:inline-flex; align-items:center; gap:8px;
                           background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
                           color:white; padding:10px 18px; border-radius:10px;
                           text-decoration:none; font-size:14px; font-weight:600;">
-                    📞 +227 90065023
+                    📞 +227 70810113
                 </a>
             </div>
         </div>
@@ -153,7 +153,7 @@
                 <div style="display:flex; flex-direction:column; gap:12px;">
                     @foreach([
                         ['icon'=>'📍','value'=>'Niamey, Niger'],
-                        ['icon'=>'📞','value'=>'+227 90065023'],
+                        ['icon'=>'📞','value'=>'+227 70810113'],
                         ['icon'=>'✉', 'value'=>'admin-dsc@digitsahelcloud.com'],
                         ['icon'=>'🌐','value'=>'www.digitsahelcloud.com'],
                     ] as $info)

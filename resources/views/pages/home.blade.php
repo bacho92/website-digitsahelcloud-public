@@ -47,17 +47,17 @@
                 Hébergement web, VPN sécurisé, interconnexion d'agences, ERP et cybersécurité
                 — des solutions digitales adaptées aux réalités des entreprises nigériennes.
             </p>
-
             <div style="display:flex; gap:16px; flex-wrap:wrap;">
                 <a href="{{ route('services') }}" class="btn-primary">
                     Découvrir nos services
                 </a>
                 <a href="tel:+22770810113"
+                   title="Appelez-nous : +227 70810113"
                    style="display:inline-block; background:rgba(255,255,255,.1);
                           border:2px solid rgba(255,255,255,.3); color:white;
                           font-weight:600; padding:12px 24px; border-radius:12px;
                           text-decoration:none; transition:all .2s;">
-                    📞 Parler à un expert →
+                   📞 Parler à un expert →
                 </a>
             </div>
         </div>

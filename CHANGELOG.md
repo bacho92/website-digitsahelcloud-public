@@ -228,7 +228,7 @@ Format basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 | **Auteur** | Bachir Abourahamane Aboubacar |
 | **Rôle** | CEO — DigitSahelCloud |
 | **Email** | admin-dsc@digitsahelcloud.com |
-| **Téléphone** | +227 90065023 |
+| **Téléphone** | +227 70810113 |
 | **Site** | www.digitsahelcloud.com |
 | **Localisation** | Niamey, Niger |
 | **Repository** | github.com/bacho92/website-digitsahelcloud |

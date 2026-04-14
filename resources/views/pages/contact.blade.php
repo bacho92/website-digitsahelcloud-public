@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title', 'Contact')
-@section('description', 'Contactez DigitSahelCloud pour vos projets de digitalisation. Notre équipe est disponible 24/7 à Niamey, Niger. +227 90065023')
+@section('description', 'Contactez DigitSahelCloud pour vos projets de digitalisation. Notre équipe est disponible 24/7 à Niamey, Niger. +227 70810113')
 @section('og_title', 'Contact — DigitSahelCloud')
 @section('og_description', 'Contactez notre équipe à Niamey, Niger — Réponse sous 24h')
 
@@ -46,7 +46,7 @@
 
             @foreach([
                 ['icon'=>'📍','label'=>'Adresse',  'value'=>'Niamey, Niger'],
-                ['icon'=>'📞','label'=>'Téléphone','value'=>'+227 90065023'],
+                ['icon'=>'📞','label'=>'Téléphone','value'=>'+227 70810113'],
                 ['icon'=>'✉', 'label'=>'Email',    'value'=>'admin-dsc@digitsahelcloud.com'],
                 ['icon'=>'🌐','label'=>'Site web',  'value'=>'www.digitsahelcloud.com'],
             ] as $info)
