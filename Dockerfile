@@ -58,7 +58,11 @@ COPY docker/nginx.conf /etc/nginx/nginx.conf
 
 # Configuration Supervisor
 COPY docker/supervisord.conf /etc/supervisord.conf
+COPY docker/ssl/cert.pem /etc/nginx/ssl/cert.pem
+COPY docker/ssl/key.pem  /etc/nginx/ssl/key.pem
+RUN chmod 600 /etc/nginx/ssl/key.pem
 
-EXPOSE 80
+# Modifier EXPOSE :
+EXPOSE 80 443
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
