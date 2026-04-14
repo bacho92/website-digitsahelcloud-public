@@ -52,11 +52,11 @@
                 <a href="{{ route('services') }}" class="btn-primary">
                     Découvrir nos services
                 </a>
-                <a href="tel:+22790065023"
+                <a href="tel:+22770810113"
                    style="display:inline-block; background:rgba(255,255,255,.1);
-                    border:2px solid rgba(255,255,255,.3); color:white;
-                    font-weight:600; padding:12px 24px; border-radius:12px;
-                    text-decoration:none; transition:all .2s;">
+                          border:2px solid rgba(255,255,255,.3); color:white;
+                          font-weight:600; padding:12px 24px; border-radius:12px;
+                          text-decoration:none; transition:all .2s;">
                     📞 Parler à un expert →
                 </a>
             </div>
@@ -408,12 +408,12 @@
                       box-shadow:0 4px 16px rgba(249,115,22,.4);">
                 Contactez-nous
             </a>
-            <a href="tel:+22790065023"
+            <a href="tel:+22770810113"
                style="display:inline-block; background:rgba(255,255,255,.1);
                       border:2px solid rgba(255,255,255,.4); color:white;
                       font-weight:700; padding:14px 32px; border-radius:12px;
                       text-decoration:none; font-size:16px;">
-                📞 +227 90065023
+                📞 +227 70810113
             </a>
         </div>
     </div>
