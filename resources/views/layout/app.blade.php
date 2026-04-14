@@ -6,7 +6,7 @@
 
     {{-- SEO Meta tags --}}
     <meta name="description"
-          content="@yield('description', 'DigitSahelCloud - Votre Partenaire Cloud au Sahel. Hébergement web, VPN sécurisé, ERP, cybersécurité et services managés au Niger.')">
+          content="@yield('description', 'DigitSahelCloud — Votre Partenaire Cloud au Sahel. Hébergement web, VPN sécurisé, ERP, cybersécurité et services managés au Niger.')">
     <meta name="keywords"
           content="@yield('keywords', 'cloud niger, hébergement web niamey, VPN agences niger, MSP niger, DigitSahelCloud, cybersécurité niger, ERP niger')">
     <meta name="author" content="DigitSahelCloud">
@@ -16,8 +16,8 @@
     {{-- Open Graph --}}
     <meta property="og:type"        content="website">
     <meta property="og:site_name"   content="DigitSahelCloud">
-    <meta property="og:title"       content="@yield('og_title', 'DigitSahelCloud - Votre Partenaire Cloud au Sahel')">
-    <meta property="og:description" content="@yield('og_description', 'MSP local au Niger - Hébergement, VPN, ERP, Cybersécurité')">
+    <meta property="og:title"       content="@yield('og_title', 'DigitSahelCloud — Votre Partenaire Cloud au Sahel')">
+    <meta property="og:description" content="@yield('og_description', 'MSP local au Niger — Hébergement, VPN, ERP, Cybersécurité')">
     <meta property="og:url"         content="{{ url()->current() }}">
     <meta property="og:image"       content="@yield('og_image', asset('images/og-image.png'))">
     <meta property="og:locale"      content="fr_FR">
@@ -37,7 +37,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon_io/favicon-16x16.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('favicon_io/apple-touch-icon.png') }}">
 
-    <title>@yield('title', 'DigitSahelCloud') - Votre Partenaire Cloud au Sahel</title>
+    <title>@yield('title', 'DigitSahelCloud') — Votre Partenaire Cloud au Sahel</title>
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,90 +49,106 @@
 
     {{-- RESPONSIVE MOBILE --}}
     <style>
-    @media (max-width: 768px) {
+        @media (max-width: 768px) {
 
-        /* === GLOBAL === */
-        section {
-            padding-left: 16px !important;
-            padding-right: 16px !important;
-        }
-        h1 { font-size: 1.8rem !important; }
-        h2 { font-size: 1.5rem !important; }
+            /* === GLOBAL === */
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
 
-        /* === HERO HOME === */
-        section[style*="min-height:60vh"] {
-            padding: 40px 16px !important;
-            min-height: auto !important;
-        }
-        section[style*="min-height:60vh"] > div > div {
-            grid-template-columns: 1fr !important;
-            gap: 24px !important;
-        }
-        /* Cacher dashboard card mobile */
-        section[style*="min-height:60vh"] > div > div > div:last-child {
-            display: none !important;
-        }
+            *, *::before, *::after {
+                box-sizing: border-box !important;
+            }
 
-        /* === BOUTONS EN COLONNE === */
-        div[style*="gap:16px; flex-wrap:wrap"] {
-            flex-direction: column !important;
-        }
-        div[style*="gap:16px; justify-content:center"] {
-            flex-direction: column !important;
-            align-items: center !important;
-        }
+            section {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                overflow: hidden !important;
+            }
 
-        /* === TOUTES LES GRILLES → 1 COLONNE === */
-        div[style*="grid-template-columns:1fr 1fr"],
-        div[style*="grid-template-columns:1fr 2fr"],
-        div[style*="grid-template-columns:2fr 1fr 1fr"],
-        div[style*="grid-template-columns:1fr 1fr 1fr"],
-        div[style*="grid-template-columns:repeat(3,1fr)"],
-        div[style*="grid-template-columns:1fr auto 1fr auto 1fr"] {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-        }
+            h1 { font-size: 1.8rem !important; }
+            h2 { font-size: 1.5rem !important; }
 
-        /* === STATS → 2 COLONNES === */
-        div[style*="grid-template-columns:repeat(4,1fr)"] {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 16px !important;
-        }
+            /* === HERO HOME === */
+            section[style*="min-height:60vh"] {
+                padding: 40px 16px !important;
+                min-height: auto !important;
+                overflow: hidden !important;
+            }
 
-        /* === SERVICES HOME → 2 COLONNES === */
-        div[style*="grid-template-columns:repeat(4,1fr)"][style*="gap:20px"] {
-            grid-template-columns: repeat(2, 1fr) !important;
-        }
+            section[style*="min-height:60vh"] > div > div {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
 
-        /* === SERVICES PAGE — items liste → 1 colonne === */
-        div[style*="grid-template-columns:repeat(3,1fr)"][style*="gap:12px"] {
-            grid-template-columns: 1fr !important;
-        }
+            /* Cacher dashboard card sur mobile */
+            section[style*="min-height:60vh"] > div > div > div:last-child {
+                display: none !important;
+            }
 
-        /* === VPN SCHEMA — cacher flèches horizontales === */
-        div[style*="font-size:24px"][style*="color:#F97316"] {
-            display: none !important;
-        }
+            /* Fix texte hero qui déborde */
+            section[style*="min-height:60vh"] h1,
+            section[style*="min-height:60vh"] p {
+                padding-left: 8px !important;
+            }
 
-        /* === FOOTER === */
-        div[style*="padding:48px 60px"],
-        div[style*="padding:40px 60px"] {
-            padding: 32px 16px !important;
-        }
-        div[style*="justify-content:flex-end"] {
-            justify-content: center !important;
-        }
-        div[style*="text-align:right"] {
-            text-align: center !important;
-        }
+            /* === BOUTONS EN COLONNE === */
+            div[style*="gap:16px; flex-wrap:wrap"] {
+                flex-direction: column !important;
+            }
 
-        /* === ANTI OVERFLOW GLOBAL === */
-        body { overflow-x: hidden !important; }
-        *, *::before, *::after {
-            max-width: 100vw !important;
-            box-sizing: border-box !important;
+            div[style*="gap:16px; justify-content:center"] {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            /* === TOUTES LES GRILLES → 1 COLONNE === */
+            div[style*="grid-template-columns:1fr 1fr"],
+            div[style*="grid-template-columns:1fr 2fr"],
+            div[style*="grid-template-columns:2fr 1fr 1fr"],
+            div[style*="grid-template-columns:1fr 1fr 1fr"],
+            div[style*="grid-template-columns:repeat(3,1fr)"],
+            div[style*="grid-template-columns:1fr auto 1fr auto 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            /* === STATS → 2 COLONNES === */
+            div[style*="grid-template-columns:repeat(4,1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px !important;
+            }
+
+            /* === SERVICES HOME → 2 COLONNES === */
+            div[style*="grid-template-columns:repeat(4,1fr)"][style*="gap:20px"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* === SERVICES PAGE — items liste → 1 colonne === */
+            div[style*="grid-template-columns:repeat(3,1fr)"][style*="gap:12px"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* === VPN SCHEMA — cacher flèches horizontales === */
+            div[style*="font-size:24px"][style*="color:#F97316"] {
+                display: none !important;
+            }
+
+            /* === FOOTER === */
+            div[style*="padding:48px 60px"],
+            div[style*="padding:40px 60px"] {
+                padding: 32px 16px !important;
+            }
+
+            div[style*="justify-content:flex-end"] {
+                justify-content: center !important;
+            }
+
+            div[style*="text-align:right"] {
+                text-align: center !important;
+            }
         }
-    }
     </style>
 
     @stack('head')
