@@ -45,10 +45,10 @@
             </p>
 
             @foreach([
-                ['icon'=>'📍','label'=>'Adresse',  'value'=>'Niamey, Niger'],
-                ['icon'=>'📞','label'=>'Téléphone','value'=>'+227 70810113'],
-                ['icon'=>'✉', 'label'=>'Email',    'value'=>'admin-dsc@digitsahelcloud.com'],
-                ['icon'=>'🌐','label'=>'Site web',  'value'=>'www.digitsahelcloud.com'],
+                ['icon' => '📍', 'label' => 'Adresse',   'value' => 'Niamey, Niger'],
+                ['icon' => '📞', 'label' => 'Téléphone', 'value' => '+227 70810113'],
+                ['icon' => '✉',  'label' => 'Email',     'value' => 'admin-dsc@digitsahelcloud.com'],
+                ['icon' => '🌐', 'label' => 'Site web',  'value' => 'www.digitsahelcloud.com'],
             ] as $info)
             <div style="display:flex; gap:16px; align-items:flex-start;
                         margin-bottom:24px; background:white; padding:20px;
@@ -92,9 +92,14 @@
         <div style="background:white; border-radius:20px; padding:40px;
                     border:1.5px solid #e2e8f0;">
             <h3 style="font-family:'Sora',sans-serif; font-weight:800;
-                       color:#1E388A; font-size:1.3rem; margin-bottom:24px;">
+                       color:#1E388A; font-size:1.3rem; margin-bottom:6px;">
                 Envoyez-nous un message
             </h3>
+            <p style="color:#6B7280; font-size:13px; margin-bottom:24px;">
+                Tous les champs marqués d'un
+                <span style="color:#ef4444; font-weight:700;">*</span>
+                sont obligatoires.
+            </p>
 
             @if(session('success'))
             <div style="background:#dcfce7; border:1px solid #86efac; color:#166534;
@@ -107,17 +112,62 @@
             <form action="{{ route('contact.send') }}" method="POST">
                 @csrf
 
-                {{-- Nom et Email --}}
+                {{-- Type de demandeur --}}
+                <div style="margin-bottom:16px;">
+                    <label style="display:block; font-size:13px; font-weight:600;
+                                  color:#374151; margin-bottom:6px;">
+                        Vous êtes <span style="color:#ef4444;">*</span>
+                    </label>
+                    <select name="demandeur_type" id="demandeur-type" required
+                            onchange="toggleDemandeurField(this.value)"
+                            style="width:100%; padding:12px 16px; border-radius:10px;
+                                   border:1.5px solid #e2e8f0; font-size:14px;
+                                   outline:none; font-family:'Plus Jakarta Sans',sans-serif;
+                                   box-sizing:border-box; background:white; color:#374151;">
+                        <option value="">— Sélectionnez votre profil —</option>
+                        <option value="entreprise"
+                                {{ old('demandeur_type') == 'entreprise' ? 'selected' : '' }}>
+                            🏢 Une entreprise / organisation
+                        </option>
+                        <option value="particulier"
+                                {{ old('demandeur_type') == 'particulier' ? 'selected' : '' }}>
+                            👤 Un particulier / freelance
+                        </option>
+                    </select>
+                </div>
+
+                {{-- Nom entreprise (conditionnel) --}}
+                <div id="field-entreprise" style="display:none; margin-bottom:16px;">
+                    <label style="display:block; font-size:13px; font-weight:600;
+                                  color:#374151; margin-bottom:6px;">
+                        Nom de l'entreprise / organisation
+                        <span style="color:#ef4444;">*</span>
+                    </label>
+                    <input type="text" name="company" id="company-input"
+                           value="{{ old('company') }}"
+                           placeholder="Ex: Société Générale Niger, ONG Sahel Plus..."
+                           style="width:100%; padding:12px 16px; border-radius:10px;
+                                  border:1.5px solid #e2e8f0; font-size:14px;
+                                  outline:none; font-family:'Plus Jakarta Sans',sans-serif;
+                                  box-sizing:border-box;">
+                    @error('company')
+                    <p style="color:#ef4444; font-size:12px; margin-top:4px;">
+                        {{ $message }}
+                    </p>
+                    @enderror
+                </div>
+
+                {{-- Nom complet + Email --}}
                 <div style="display:grid; grid-template-columns:1fr 1fr;
                             gap:16px; margin-bottom:16px;">
                     <div>
                         <label style="display:block; font-size:13px; font-weight:600;
                                       color:#374151; margin-bottom:6px;">
-                            Nom complet *
+                            Nom complet <span style="color:#ef4444;">*</span>
                         </label>
                         <input type="text" name="name" required
                                value="{{ old('name') }}"
-                               placeholder="Votre nom complet"
+                               placeholder="Prénom et nom"
                                style="width:100%; padding:12px 16px; border-radius:10px;
                                       border:1.5px solid #e2e8f0; font-size:14px;
                                       outline:none; font-family:'Plus Jakarta Sans',sans-serif;
@@ -131,7 +181,7 @@
                     <div>
                         <label style="display:block; font-size:13px; font-weight:600;
                                       color:#374151; margin-bottom:6px;">
-                            Email *
+                            Email <span style="color:#ef4444;">*</span>
                         </label>
                         <input type="email" name="email" required
                                value="{{ old('email') }}"
@@ -148,37 +198,87 @@
                     </div>
                 </div>
 
-                {{-- Téléphone --}}
+                {{-- Téléphone WhatsApp --}}
                 <div style="margin-bottom:16px;">
                     <label style="display:block; font-size:13px; font-weight:600;
                                   color:#374151; margin-bottom:6px;">
-                        Téléphone
-                        <span style="color:#6B7280; font-weight:400; font-size:12px;">
-                            (optionnel)
-                        </span>
+                        Téléphone WhatsApp <span style="color:#ef4444;">*</span>
                     </label>
-                    <input type="tel" name="phone"
-                           value="{{ old('phone') }}"
-                           placeholder="+227 XX XX XX XX"
-                           style="width:100%; padding:12px 16px; border-radius:10px;
-                                  border:1.5px solid #e2e8f0; font-size:14px;
-                                  outline:none; font-family:'Plus Jakarta Sans',sans-serif;
-                                  box-sizing:border-box;">
+                    <div style="position:relative;">
+                        <span style="position:absolute; left:14px; top:50%;
+                                     transform:translateY(-50%); font-size:16px;">
+                            📱
+                        </span>
+                        <input type="tel" name="phone" required
+                               value="{{ old('phone') }}"
+                               placeholder="+227 XX XX XX XX"
+                               style="width:100%; padding:12px 16px 12px 42px;
+                                      border-radius:10px; border:1.5px solid #e2e8f0;
+                                      font-size:14px; outline:none;
+                                      font-family:'Plus Jakarta Sans',sans-serif;
+                                      box-sizing:border-box;">
+                    </div>
+                    <p style="color:#6B7280; font-size:12px; margin-top:4px;">
+                        💬 Nous vous contacterons de préférence via WhatsApp.
+                    </p>
+                    @error('phone')
+                    <p style="color:#ef4444; font-size:12px; margin-top:4px;">
+                        {{ $message }}
+                    </p>
+                    @enderror
+                </div>
+
+                {{-- Rôle / Poste --}}
+                <div style="margin-bottom:16px;">
+                    <label style="display:block; font-size:13px; font-weight:600;
+                                  color:#374151; margin-bottom:6px;">
+                        Votre rôle / poste <span style="color:#ef4444;">*</span>
+                    </label>
+                    <select name="role" required
+                            style="width:100%; padding:12px 16px; border-radius:10px;
+                                   border:1.5px solid #e2e8f0; font-size:14px;
+                                   outline:none; font-family:'Plus Jakarta Sans',sans-serif;
+                                   box-sizing:border-box; background:white; color:#374151;">
+                        <option value="">— Sélectionnez votre poste —</option>
+                        @foreach([
+                            'Directeur Général / PDG',
+                            'Responsable IT / DSI',
+                            'Directeur Administratif & Financier',
+                            'Responsable RH',
+                            'Chef de projet',
+                            'Développeur / Technicien',
+                            'Commercial / Marketing',
+                            'Autre',
+                        ] as $role)
+                        <option value="{{ $role }}"
+                                {{ old('role') == $role ? 'selected' : '' }}>
+                            {{ $role }}
+                        </option>
+                        @endforeach
+                    </select>
+                    <p style="color:#6B7280; font-size:12px; margin-top:4px;">
+                        💡 Cela nous permet d'adapter notre réponse à votre contexte.
+                    </p>
+                    @error('role')
+                    <p style="color:#ef4444; font-size:12px; margin-top:4px;">
+                        {{ $message }}
+                    </p>
+                    @enderror
                 </div>
 
                 {{-- Service souhaité --}}
                 <div style="margin-bottom:16px;">
                     <label style="display:block; font-size:13px; font-weight:600;
                                   color:#374151; margin-bottom:6px;">
-                        Service souhaité
+                        Service souhaité <span style="color:#ef4444;">*</span>
                     </label>
-                    <select name="service" id="service-select"
+                    <select name="service" id="service-select" required
                             onchange="toggleAutreField(this.value)"
                             style="width:100%; padding:12px 16px; border-radius:10px;
                                    border:1.5px solid #e2e8f0; font-size:14px;
                                    outline:none; font-family:'Plus Jakarta Sans',sans-serif;
-                                   box-sizing:border-box; background:white;">
-                        <option value="">Sélectionnez un service</option>
+                                   box-sizing:border-box; background:white; color:#374151;">
+                        <option value="">— Choisissez un service —</option>
                         @foreach([
                             'Hébergement Web & Cloud',
                             'VPN & Interconnexion Agences',
@@ -196,49 +296,45 @@
                         </option>
                         @endforeach
                     </select>
+                    @error('service')
+                    <p style="color:#ef4444; font-size:12px; margin-top:4px;">
+                        {{ $message }}
+                    </p>
+                    @enderror
                 </div>
 
                 {{-- Champ Autre dynamique --}}
-                <div id="autre-field"
-                     style="display:none; margin-bottom:16px;">
+                <div id="autre-field" style="display:none; margin-bottom:16px;">
                     <label style="display:block; font-size:13px; font-weight:600;
                                   color:#F97316; margin-bottom:6px;">
-                        Précisez votre besoin *
+                        Précisez votre besoin <span style="color:#ef4444;">*</span>
                     </label>
-                    <input type="text" name="service_autre"
-                           id="service-autre-input"
+                    <input type="text" name="service_autre" id="service-autre-input"
                            placeholder="Ex: Formation équipe, Audit réseau, Migration données..."
                            style="width:100%; padding:12px 16px; border-radius:10px;
                                   border:1.5px solid #F97316; font-size:14px;
                                   outline:none; font-family:'Plus Jakarta Sans',sans-serif;
-                                  box-sizing:border-box;
-                                  background:rgba(249,115,22,.03);">
-                    <p style="color:#6B7280; font-size:12px; margin-top:6px;">
-                        💡 Décrivez brièvement le type de service recherché —
-                        différent du message ci-dessous.
-                    </p>
+                                  box-sizing:border-box; background:rgba(249,115,22,.03);">
                 </div>
 
                 {{-- Message --}}
                 <div style="margin-bottom:24px;">
                     <label style="display:block; font-size:13px; font-weight:600;
                                   color:#374151; margin-bottom:6px;">
-                        Message
-                        <span style="color:#6B7280; font-weight:400; font-size:12px;">
-                            (optionnel)
-                        </span>
+                        Message <span style="color:#ef4444;">*</span>
                     </label>
                     <div style="background:#F8FAFC; padding:12px 14px;
                                 border-radius:8px; border-left:3px solid #1E388A;
                                 margin-bottom:10px;">
                         <p style="color:#6B7280; font-size:12px; margin:0; line-height:1.6;">
-                            💬 Partagez toute information complémentaire utile à notre équipe :
-                            délai souhaité, budget estimé, contexte du projet,
-                            nombre d'agences à connecter, questions spécifiques...
+                            💬 Décrivez brièvement votre besoin : par exemple, vous souhaitez
+                            créer un site web vitrine, mettre en place une messagerie professionnelle
+                            (mail pro), connecter vos agences, ou digitaliser votre gestion interne.
+                            Plus votre description est précise, mieux nous pouvons vous conseiller.
                         </p>
                     </div>
-                    <textarea name="message" rows="5"
-                              placeholder="Ex: Nous avons 3 agences à connecter, budget ~500 000 FCFA, délai souhaité 2 mois..."
+                    <textarea name="message" rows="5" required
+                              placeholder="Ex: Je souhaite créer un site web pour mon entreprise, ou mettre en place des emails professionnels @monentreprise.com..."
                               style="width:100%; padding:12px 16px; border-radius:10px;
                                      border:1.5px solid #e2e8f0; font-size:14px;
                                      outline:none; font-family:'Plus Jakarta Sans',sans-serif;
@@ -292,26 +388,44 @@
 
 @push('scripts')
 <script>
+function toggleDemandeurField(value) {
+    const fieldEntreprise = document.getElementById('field-entreprise');
+    const companyInput    = document.getElementById('company-input');
+
+    if (value === 'entreprise') {
+        fieldEntreprise.style.display = 'block';
+        companyInput.required = true;
+        companyInput.focus();
+    } else {
+        fieldEntreprise.style.display = 'none';
+        companyInput.required = false;
+        companyInput.value    = '';
+    }
+}
+
 function toggleAutreField(value) {
     const autreField = document.getElementById('autre-field');
     const autreInput = document.getElementById('service-autre-input');
 
     if (value === 'Autre') {
         autreField.style.display = 'block';
-        autreInput.required      = true;
+        autreInput.required = true;
         autreInput.focus();
     } else {
         autreField.style.display = 'none';
-        autreInput.required      = false;
-        autreInput.value         = '';
+        autreInput.required = false;
+        autreInput.value    = '';
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const select = document.getElementById('service-select');
-    if (select && select.value === 'Autre') {
+document.addEventListener('DOMContentLoaded', function () {
+    const selectType    = document.getElementById('demandeur-type');
+    const selectService = document.getElementById('service-select');
+
+    if (selectType && selectType.value)
+        toggleDemandeurField(selectType.value);
+    if (selectService && selectService.value === 'Autre')
         toggleAutreField('Autre');
-    }
 });
 </script>
 @endpush
