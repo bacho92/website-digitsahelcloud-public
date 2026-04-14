@@ -37,26 +37,43 @@ class PageController extends Controller
     public function send(Request $request)
     {
         $validated = $request->validate([
-            'name'          => 'required|min:2|max:100',
-            'email'         => 'required|email',
-            'phone'         => 'nullable|max:20',
-            'service'       => 'nullable|string',
-            'service_autre' => 'nullable|string|max:200',
-            'message'       => 'nullable|max:2000',
+            'demandeur_type' => 'required|in:entreprise,particulier',
+            'company'        => 'nullable|required_if:demandeur_type,entreprise|string|max:150',
+            'name'           => 'required|min:2|max:100',
+            'email'          => 'required|email',
+            'phone'          => 'required|max:20',
+            'role'           => 'required|string|max:100',
+            'service'        => 'required|string',
+            'service_autre'  => 'nullable|string|max:200',
+            'message'        => 'required|max:2000',
+        ], [
+            // Messages d'erreur en français
+            'demandeur_type.required' => 'Veuillez indiquer si vous êtes une entreprise ou un particulier.',
+            'demandeur_type.in'       => 'Profil invalide.',
+            'company.required_if'     => 'Le nom de l\'entreprise est obligatoire.',
+            'name.required'           => 'Le nom complet est obligatoire.',
+            'name.min'                => 'Le nom doit contenir au moins 2 caractères.',
+            'email.required'          => 'L\'adresse email est obligatoire.',
+            'email.email'             => 'L\'adresse email n\'est pas valide.',
+            'phone.required'          => 'Le numéro WhatsApp est obligatoire.',
+            'role.required'           => 'Veuillez indiquer votre rôle / poste.',
+            'service.required'        => 'Veuillez sélectionner un service.',
+            'message.required'        => 'Le message est obligatoire.',
+            'message.max'             => 'Le message ne doit pas dépasser 2000 caractères.',
         ]);
 
-        // Si "Autre" → combiner avec la précision
+        // Si "Autre" → combiner service + précision
         if ($request->service === 'Autre' && $request->service_autre) {
             $validated['service'] = 'Autre : ' . $request->service_autre;
         }
 
-        // Supprimer service_autre du tableau avant sauvegarde
+        // Nettoyer les champs non stockés
         unset($validated['service_autre']);
 
         // Sauvegarder en base de données
         $contact = Contact::create($validated);
 
-        // Envoyer l'email
+        // Envoyer l'email de notification
         try {
             Mail::to('admin-dsc@digitsahelcloud.com')
                 ->send(new ContactMail($contact));
