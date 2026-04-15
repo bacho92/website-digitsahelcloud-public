@@ -20,6 +20,12 @@ class ContactResource extends Resource
     protected static ?string $modelLabel = 'Message';
     protected static ?string $pluralModelLabel = 'Messages';
     protected static ?int $navigationSort = 1;
+    protected static bool $canCreate = false; // ← Désactive le bouton "New Message"
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {
@@ -262,9 +268,8 @@ class ContactResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListContacts::route('/'),
-            'create' => Pages\CreateContact::route('/create'),
-            'edit'   => Pages\EditContact::route('/{record}/edit'),
+            'index' => Pages\ListContacts::route('/'),
+            'edit'  => Pages\EditContact::route('/{record}/edit'),
         ];
     }
 
