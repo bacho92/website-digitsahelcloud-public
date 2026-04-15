@@ -1,0 +1,40 @@
+name: 🚀 Deploy DigitSahelCloud
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ✅ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔐 Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: 🚀 Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            cd /var/www/digitsahelcloud
+
+            echo "📥 Pull du code..."
+            git pull origin main
+
+            echo "🗃️ Migration base de données..."
+            docker compose exec -T app php artisan migrate --force
+
+            echo "🧹 Nettoyage des caches..."
+            docker compose exec -T app php artisan optimize:clear
+
+            echo "⚡ Optimisation..."
+            docker compose exec -T app php artisan optimize
+
+            echo "✅ Déploiement terminé !"
+          EOF
