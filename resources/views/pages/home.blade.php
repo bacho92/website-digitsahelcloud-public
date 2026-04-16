@@ -36,8 +36,8 @@
             {{-- IMAGE 1 FIX : police réduite + tout sur 2 lignes --}}
             <h1 style="font-family:'Sora',sans-serif; font-size:clamp(2rem,4vw,3.2rem);
                         font-weight:800; color:white; line-height:1.2; margin-bottom:20px;">
-                Fini les Solutions IT Hors de<br>
-                <span style="color:#F97316;">Portée</span>
+                Fini les Solutions IT <br>
+                <span style="color:#F97316;">Hors de Portée</span>
             </h1>
 
             <p style="color:rgba(255,255,255,.75); font-size:1.05rem; line-height:1.8;
