@@ -73,7 +73,7 @@
                     {{-- AWS --}}
                     <div style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
                                 padding:8px 14px; border-radius:10px; display:flex; align-items:center; gap:8px;">
-                        <svg width="28" height="18" viewBox="0 0 60 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="30" height="18" viewBox="0 0 60 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <text x="0" y="28" font-family="Arial" font-weight="900" font-size="28" fill="#FF9900">AWS</text>
                         </svg>
                     </div>
