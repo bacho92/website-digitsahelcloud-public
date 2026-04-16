@@ -8,7 +8,7 @@
 @section('content')
 
 {{-- ═══ HERO ═══ --}}
-<section style="min-height:60vh;
+<section style="min-height:50vh;
                 background:linear-gradient(135deg, #152a6b 0%, #1E388A 60%, #2d4fa3 100%);
                 display:flex; align-items:center; padding:80px 32px;
                 position:relative; overflow:hidden;">
@@ -37,7 +37,7 @@
             <h1 style="font-family:'Sora',sans-serif; font-size:clamp(2rem,4vw,3.2rem);
                         font-weight:800; color:white; line-height:1.2; margin-bottom:20px;">
                 Fini les Solutions IT <br>
-                <span style="color:#F97316;">Hors de Portée</span>
+                <span style="color:#F97316;">hors de portée</span>
             </h1>
 
             <p style="color:rgba(255,255,255,.75); font-size:1.05rem; line-height:1.8;
@@ -207,7 +207,7 @@
         <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
             @foreach([
                 [
-                    'num'   => '+95 000',
+                    'num'   => '+30 000',
                     'label' => 'Organisations à digitaliser',
                     'svg'   => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>',
                 ],
