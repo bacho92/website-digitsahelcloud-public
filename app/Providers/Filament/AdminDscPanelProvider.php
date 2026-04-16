@@ -32,7 +32,7 @@ class AdminDscPanelProvider extends PanelProvider
             // ── Branding ──────────────────────────────────
             ->brandName('DigitSahelCloud')
             ->brandLogo(asset('images/dsc-logo.jpeg'))
-            ->brandLogoHeight('3rem')
+            ->brandLogoHeight('6rem')
             ->favicon(asset('favicon.ico'))
 
             // ── Couleurs DSC ──────────────────────────────
@@ -45,12 +45,11 @@ class AdminDscPanelProvider extends PanelProvider
                 'info'      => Color::Sky,
             ])
 
-            // ── Navigation ────────────────────────────────
+            // ── CSS personnalisé ──────────────────────────
+            ->viteTheme('resources/css/filament/admin-dsc/theme.css')
+
+            // ── Sidebar ───────────────────────────────────
             ->sidebarCollapsibleOnDesktop()
-            ->navigationGroups([
-                'Contacts & Messages',
-                'Paramètres',
-            ])
 
             // ── Resources & Pages ─────────────────────────
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
@@ -59,11 +58,10 @@ class AdminDscPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
 
-            // ── Widgets ───────────────────────────────────
+            // ── Widgets — sans AccountWidget ──────────────
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 StatsOverview::class,
-                Widgets\AccountWidget::class,
             ])
 
             // ── Middleware ────────────────────────────────
