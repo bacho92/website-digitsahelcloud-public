@@ -39,6 +39,28 @@
     gap: 10px;
     margin-bottom: 28px;
 }
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    padding: 20px 28px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+.category-header-text { flex: 1; min-width: 0; }
+.category-badge {
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+@media (max-width: 480px) {
+    .category-header { flex-wrap: wrap; gap: 10px; }
+    .category-badge { margin-left: 0; }
+}
 .wave-top {
     height: 60px;
     background: #F1F5F9;
@@ -123,10 +145,7 @@
 <section style="padding:60px 32px 20px; background:#F1F5F9;">
     <div style="max-width:1280px; margin:0 auto;">
 
-        <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;
-                    padding:20px 28px; background:white; border-radius:16px;
-                    border-left:5px solid #1E388A;
-                    box-shadow:0 2px 12px rgba(30,56,138,.08);">
+        <div class="category-header" style="background:white; border-left:5px solid #1E388A;">
             <div style="width:56px; height:56px; border-radius:14px; background:#1E388A;
                         display:flex; align-items:center; justify-content:center; flex-shrink:0;
                         box-shadow:0 4px 16px rgba(30,56,138,.3);">
@@ -136,23 +155,22 @@
                           d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/>
                 </svg>
             </div>
-            <div>
+            <div class="category-header-text">
                 <h2 style="font-family:'Sora',sans-serif; font-weight:800; color:#1E388A;
-                           font-size:1.5rem; margin:0 0 4px;">☁️ Cloud & Infrastructure</h2>
+                           font-size:1.4rem; margin:0 0 4px;">☁️ Cloud & Infrastructure</h2>
                 <p style="color:#6B7280; font-size:14px; margin:0;">
                     Hébergement haute disponibilité, serveurs managés et infrastructure certifiée
                 </p>
             </div>
-            <div style="margin-left:auto; background:#EEF2FF; padding:6px 16px;
-                        border-radius:50px; font-size:12px; font-weight:700; color:#1E388A; white-space:nowrap;">
+            <div class="category-badge" style="background:#EEF2FF; color:#1E388A;">
                 4 services
             </div>
         </div>
 
         @foreach([
             [
-                'image' => 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=800&q=90',
-                'alt'   => 'Rack de serveurs haute performance datacenter professionnel',
+                'image' => 'https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&q=90',
+                'alt'   => 'Serveurs rack datacenter haute performance bleu lumineux professionnel',
                 'title' => 'Hébergement Web & Cloud',
                 'color' => '#1E388A',
                 'badge' => '✅ Haute disponibilité 99.9%',
@@ -167,8 +185,8 @@
                 ],
             ],
             [
-                'image' => 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=90',
-                'alt'   => 'Infrastructure cloud managée multi-cloud déploiement',
+                'image' => 'https://images.unsplash.com/photo-1667984390527-850f63192709?w=800&q=90',
+                'alt'   => 'Infrastructure cloud managée abstract 3D réseau connexions lumineuses',
                 'title' => 'Infrastructure Cloud Managée',
                 'color' => '#2563EB',
                 'badge' => '✅ Multi-Cloud certifié',
@@ -288,10 +306,7 @@
 <section style="padding:40px 32px 20px; background:white;">
     <div style="max-width:1280px; margin:0 auto;">
 
-        <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;
-                    padding:20px 28px; background:#FFF5F5; border-radius:16px;
-                    border-left:5px solid #DC2626;
-                    box-shadow:0 2px 12px rgba(220,38,38,.08);">
+        <div class="category-header" style="background:#FFF5F5; border-left:5px solid #DC2626;">
             <div style="width:56px; height:56px; border-radius:14px; background:#DC2626;
                         display:flex; align-items:center; justify-content:center; flex-shrink:0;
                         box-shadow:0 4px 16px rgba(220,38,38,.3);">
@@ -301,23 +316,22 @@
                           d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
                 </svg>
             </div>
-            <div>
+            <div class="category-header-text">
                 <h2 style="font-family:'Sora',sans-serif; font-weight:800; color:#DC2626;
-                           font-size:1.5rem; margin:0 0 4px;">🔒 Réseaux & Sécurité</h2>
+                           font-size:1.4rem; margin:0 0 4px;">🔒 Réseaux & Sécurité</h2>
                 <p style="color:#6B7280; font-size:14px; margin:0;">
                     Connectivité sécurisée, protection avancée et surveillance permanente
                 </p>
             </div>
-            <div style="margin-left:auto; background:#FFF0F0; padding:6px 16px;
-                        border-radius:50px; font-size:12px; font-weight:700; color:#DC2626; white-space:nowrap;">
+            <div class="category-badge" style="background:#FFF0F0; color:#DC2626;">
                 4 services
             </div>
         </div>
 
         @foreach([
             [
-                'image' => 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=90',
-                'alt'   => 'VPN interconnexion agences bureaux réseau sécurisé',
+                'image' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=90',
+                'alt'   => 'Interconnexion mondiale réseau globe terrestre lumineux connexions digitales',
                 'title' => 'Interconnexion & Agences',
                 'color' => '#F97316',
                 'badge' => '✅ Chiffrement AES-256',
@@ -453,10 +467,7 @@
 <section style="padding:40px 32px 60px; background:#F1F5F9;">
     <div style="max-width:1280px; margin:0 auto;">
 
-        <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;
-                    padding:20px 28px; background:white; border-radius:16px;
-                    border-left:5px solid #7C3AED;
-                    box-shadow:0 2px 12px rgba(124,58,237,.08);">
+        <div class="category-header" style="background:white; border-left:5px solid #7C3AED;">
             <div style="width:56px; height:56px; border-radius:14px; background:#7C3AED;
                         display:flex; align-items:center; justify-content:center; flex-shrink:0;
                         box-shadow:0 4px 16px rgba(124,58,237,.3);">
@@ -466,15 +477,14 @@
                           d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/>
                 </svg>
             </div>
-            <div>
+            <div class="category-header-text">
                 <h2 style="font-family:'Sora',sans-serif; font-weight:800; color:#7C3AED;
-                           font-size:1.5rem; margin:0 0 4px;">💡 Digital & Innovation</h2>
+                           font-size:1.4rem; margin:0 0 4px;">💡 Digital & Innovation</h2>
                 <p style="color:#6B7280; font-size:14px; margin:0;">
                     Développement, gestion intégrée et transformation numérique
                 </p>
             </div>
-            <div style="margin-left:auto; background:#F5F3FF; padding:6px 16px;
-                        border-radius:50px; font-size:12px; font-weight:700; color:#7C3AED; white-space:nowrap;">
+            <div class="category-badge" style="background:#F5F3FF; color:#7C3AED;">
                 4 services
             </div>
         </div>
