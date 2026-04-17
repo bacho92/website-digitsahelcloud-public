@@ -473,85 +473,140 @@
     </svg>
 </div>
 
-{{-- ═══ TÉMOIGNAGES ═══ --}}
+{{-- ═══ SECTEURS QUE NOUS SERVONS ═══ --}}
 <section style="padding:80px 32px; background:white;">
     <div style="max-width:1280px; margin:0 auto;">
 
         <div style="text-align:center; margin-bottom:56px;">
-            <span class="section-tag">Ils nous font confiance</span>
+            <span class="section-tag">Nos secteurs cibles</span>
             <h2 class="section-title" style="text-align:center;">
-                Ce que disent nos clients
+                Secteurs que nous servons
             </h2>
-            <p style="color:#6B7280; font-size:1rem; max-width:500px; margin:0 auto; line-height:1.7;">
-                Des organisations nigériennes qui ont fait confiance à DigitSahelCloud
-                pour leur transformation numérique.
+            <p style="color:#6B7280; font-size:1rem; max-width:560px; margin:0 auto; line-height:1.7;">
+                DigitSahelCloud accompagne tous types d'organisations nigériennes
+                dans leur transformation numérique — quel que soit votre secteur.
             </p>
         </div>
 
-        <div class="temoignages-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
             @foreach([
                 [
-                    'initiales' => 'AM',
-                    'nom'       => 'Abdoulaye Mahamane',
-                    'poste'     => 'DSI — Banque Régionale du Niger',
-                    'color'     => '#1E388A',
-                    'note'      => 5,
-                    'texte'     => 'DigitSahelCloud a déployé notre réseau VPN inter-agences en moins de 2 semaines. La disponibilité est impeccable et le support local en français fait vraiment la différence. On n\'est plus dépendants de prestataires étrangers.',
+                    'image' => 'https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=600&q=90',
+                    'alt'   => 'Banque microfinance Niger transactions sécurisées',
+                    'icon'  => '🏦',
+                    'title' => 'Banques & Microfinance',
+                    'desc'  => 'Interconnexion sécurisée des agences, protection des transactions et conformité réglementaire.',
+                    'color' => '#1E388A',
+                    'tags'  => ['VPN inter-agences','Cybersécurité','Email pro'],
                 ],
                 [
-                    'initiales' => 'FD',
-                    'nom'       => 'Fatouma Diallo',
-                    'poste'     => 'Directrice — ONG Sahel Développement',
-                    'color'     => '#F97316',
-                    'note'      => 5,
-                    'texte'     => 'Notre messagerie professionnelle et notre site web sont maintenant opérationnels. L\'équipe a été réactive, professionnelle et a su s\'adapter à notre budget. Je recommande DigitSahelCloud sans hésitation.',
+                    'image' => 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=90',
+                    'alt'   => 'Éducation université école Niger numérique',
+                    'icon'  => '🎓',
+                    'title' => 'Éducation & Universités',
+                    'desc'  => 'Connexion des campus, partage de ressources pédagogiques et gestion des systèmes scolaires.',
+                    'color' => '#7C3AED',
+                    'tags'  => ['Interconnexion campus','Applications métier','Support IT'],
                 ],
                 [
-                    'initiales' => 'IB',
-                    'nom'       => 'Ibrahim Boubacar',
-                    'poste'     => 'DAF — Groupe Commercial Niamey',
-                    'color'     => '#059669',
-                    'note'      => 5,
-                    'texte'     => 'Depuis que DigitSahelCloud gère notre infrastructure IT, nous n\'avons plus de pannes répétées. Le monitoring 24/7 et les rapports mensuels nous donnent une visibilité totale sur nos systèmes. Excellent investissement.',
+                    'image' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=90',
+                    'alt'   => 'Administration publique gouvernement numérique Niger',
+                    'icon'  => '🏛️',
+                    'title' => 'Administrations Publiques',
+                    'desc'  => 'Infrastructure sécurisée pour les données sensibles de l\'État et la connexion des services.',
+                    'color' => '#DC2626',
+                    'tags'  => ['Données sécurisées','Multi-sites','Conformité'],
                 ],
-            ] as $t)
-            <div class="temoignage-card" style="background:#F8FAFF; border-radius:20px; padding:32px;
-                        border:1.5px solid #e2e8f0; position:relative; overflow:hidden;">
+                [
+                    'image' => 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=90',
+                    'alt'   => 'ONG association humanitaire Sahel Niger terrain',
+                    'icon'  => '🌍',
+                    'title' => 'ONG & Associations',
+                    'desc'  => 'Liaison fiable entre bureaux terrain et sièges régionaux, même en zone à faible connectivité.',
+                    'color' => '#059669',
+                    'tags'  => ['Bureaux terrain','Cloud léger','Email pro'],
+                ],
+                [
+                    'image' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=90',
+                    'alt'   => 'Commerce distribution réseau magasins Niger',
+                    'icon'  => '🏪',
+                    'title' => 'Commerce & Distribution',
+                    'desc'  => 'Synchronisation des stocks et des caisses entre points de vente — vision centralisée en temps réel.',
+                    'color' => '#F97316',
+                    'tags'  => ['ERP & Gestion','VPN agences','Support 24/7'],
+                ],
+                [
+                    'image' => 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=90',
+                    'alt'   => 'Santé hôpital clinique système informatique Niger',
+                    'icon'  => '🏥',
+                    'title' => 'Santé & Hôpitaux',
+                    'desc'  => 'Partage sécurisé des données médicales entre établissements et accès aux plateformes nationales.',
+                    'color' => '#0284C7',
+                    'tags'  => ['Données médicales','Sécurité','Multi-sites'],
+                ],
+            ] as $secteur)
+            <div style="border-radius:20px; overflow:hidden; border:1.5px solid #e2e8f0;
+                        transition:all .3s; cursor:pointer;"
+                 onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.12)';this.style.borderColor='{{ $secteur['color'] }}'"
+                 onmouseout="this.style.transform='none';this.style.boxShadow='none';this.style.borderColor='#e2e8f0'"
+                 onclick="window.location='{{ route('contact') }}'">
 
-                {{-- Guillemets décoratifs --}}
-                <div style="position:absolute; top:-10px; right:20px; font-size:80px;
-                            color:{{ $t['color'] }}15; font-family:Georgia,serif; line-height:1;">
-                    "
-                </div>
-
-                {{-- Étoiles --}}
-                <div style="display:flex; gap:4px; margin-bottom:16px;">
-                    @for($i = 0; $i < $t['note']; $i++)
-                    <span style="color:#F97316; font-size:16px;">★</span>
-                    @endfor
-                </div>
-
-                <p style="color:#374151; font-size:14px; line-height:1.8; margin-bottom:24px;
-                           font-style:italic; position:relative; z-index:1;">
-                    "{{ $t['texte'] }}"
-                </p>
-
-                <div style="display:flex; align-items:center; gap:14px;">
-                    <div style="width:48px; height:48px; border-radius:50%;
-                                background:{{ $t['color'] }}; display:flex;
-                                align-items:center; justify-content:center;
-                                font-family:'Sora',sans-serif; font-weight:800;
-                                color:white; font-size:16px; flex-shrink:0;">
-                        {{ $t['initiales'] }}
+                {{-- Image --}}
+                <div style="position:relative; height:180px; overflow:hidden;">
+                    <img src="{{ $secteur['image'] }}" alt="{{ $secteur['alt'] }}"
+                         loading="lazy"
+                         style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;"
+                         onmouseover="this.style.transform='scale(1.05)'"
+                         onmouseout="this.style.transform='scale(1)'">
+                    <div style="position:absolute; inset:0;
+                                background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 60%, transparent 100%);">
                     </div>
-                    <div>
-                        <div style="font-family:'Sora',sans-serif; font-weight:700;
-                                    color:#1E388A; font-size:14px;">{{ $t['nom'] }}</div>
-                        <div style="color:#6B7280; font-size:12px; margin-top:2px;">{{ $t['poste'] }}</div>
+                    <div style="position:absolute; top:14px; left:14px;">
+                        <div style="width:40px; height:40px; background:{{ $secteur['color'] }};
+                                    border-radius:12px; display:flex; align-items:center;
+                                    justify-content:center; font-size:20px;
+                                    box-shadow:0 4px 12px rgba(0,0,0,.3);">
+                            {{ $secteur['icon'] }}
+                        </div>
+                    </div>
+                    <div style="position:absolute; bottom:14px; left:14px; right:14px;">
+                        <h3 style="font-family:'Sora',sans-serif; font-weight:800;
+                                   color:white; font-size:15px; margin:0;
+                                   text-shadow:0 2px 8px rgba(0,0,0,.5);">
+                            {{ $secteur['title'] }}
+                        </h3>
+                    </div>
+                </div>
+
+                {{-- Contenu --}}
+                <div style="padding:20px; background:white;">
+                    <p style="color:#6B7280; font-size:13px; line-height:1.7; margin-bottom:14px;">
+                        {{ $secteur['desc'] }}
+                    </p>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        @foreach($secteur['tags'] as $tag)
+                        <span style="background:{{ $secteur['color'] }}10;
+                                     color:{{ $secteur['color'] }};
+                                     border:1px solid {{ $secteur['color'] }}25;
+                                     padding:3px 10px; border-radius:50px;
+                                     font-size:11px; font-weight:600;">
+                            {{ $tag }}
+                        </span>
+                        @endforeach
                     </div>
                 </div>
             </div>
             @endforeach
+        </div>
+
+        <div style="text-align:center; margin-top:40px;">
+            <a href="{{ route('contact') }}"
+               style="display:inline-flex; align-items:center; gap:8px;
+                      background:#1E388A; color:white; font-weight:700;
+                      padding:14px 32px; border-radius:12px; text-decoration:none;
+                      font-size:15px; box-shadow:0 4px 16px rgba(30,56,138,.3);">
+                Votre secteur n'est pas listé ? Contactez-nous →
+            </a>
         </div>
     </div>
 </section>
