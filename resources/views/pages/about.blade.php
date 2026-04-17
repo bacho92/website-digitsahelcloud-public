@@ -483,7 +483,6 @@
                                      background:rgba(255,255,255,.2); padding:3px 10px; border-radius:50px;">
                             {{ $road['phase'] }}
                         </span>
-                        <span style="color:rgba(255,255,255,.8); font-size:11px;">{{ $road['period'] }}</span>
                     </div>
                     <div style="font-size:36px; margin-bottom:8px;">{{ $road['icon'] }}</div>
                     <h3 style="font-family:'Sora',sans-serif; font-weight:800;
