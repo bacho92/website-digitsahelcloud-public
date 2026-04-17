@@ -98,9 +98,9 @@
                     Pourquoi DigitSahelCloud ?
                 </h2>
                 <p style="color:#374151; font-size:15px; line-height:1.8; margin-bottom:16px;">
-                    Fort de plus de 5 ans d'expérience en ingénierie réseaux, supervision NOC
-                    et infrastructure cloud au Niger et à l'international, notre fondateur a constaté
-                    un manque criant : les organisations nigériennes n'avaient pas accès
+                    Fort de plus de 5 ans d'expérience en ingénierie réseaux et systèmes, supervision 
+                    NOC et infrastructure cloud au Niger et à l'international, notre fondateur a
+                    constaté un manque criant : les organisations nigériennes n'avaient pas accès
                     à des services IT managés locaux, fiables et abordables.
                 </p>
                 <p style="color:#374151; font-size:15px; line-height:1.8; margin-bottom:24px;">
@@ -284,9 +284,9 @@
                     </p>
                     <div class="about-cert-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; text-align:left;">
                         @foreach([
-                            ['AWS Cloud Practitioner','#FF9900'],
-                            ['Azure AZ-900','#0078D4'],
-                            ['Linux Foundation LFS158x','#FCC624'],
+                            ['AWS Cloud Practitioner - Solutions Architect (en cours)','#FF9900'],
+                            ['Azure AZ-900 - Azure-104 (en cours)','#0078D4'],
+                            ['Linux Foundation LFS158x (Kuberntes)','#FCC624'],
                             ['CCNA v7 & CCNP ENCOR','#1BA0D7'],
                             ['Microsoft MSCA 2016','#0078D4'],
                             ['CKA (en cours)','#326CE5'],
@@ -446,7 +446,6 @@
             @foreach([
                 [
                     'phase'  => 'Maintenant',
-                    'period' => '2025 — 2026',
                     'color'  => '#22c55e',
                     'status' => 'Actif',
                     'icon'   => '☁️',
@@ -456,7 +455,6 @@
                 ],
                 [
                     'phase'  => 'Moyen terme',
-                    'period' => '2027 — 2028',
                     'color'  => '#F97316',
                     'status' => 'Planifié',
                     'icon'   => '🏢',
@@ -466,7 +464,6 @@
                 ],
                 [
                     'phase'  => 'Long terme',
-                    'period' => '2029+',
                     'color'  => '#7C3AED',
                     'status' => 'Vision',
                     'icon'   => '🖥️',
