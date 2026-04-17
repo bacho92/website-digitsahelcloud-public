@@ -7,11 +7,76 @@
 
 @section('content')
 
+{{-- ═══ CSS RESPONSIVE MOBILE ═══ --}}
+<style>
+.service-card {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.06);
+    border: 1px solid #e2e8f0;
+}
+.service-card-image {
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+}
+.service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.service-card-content {
+    padding: 36px;
+}
+.service-items-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+.wave-top {
+    height: 60px;
+    background: #F1F5F9;
+    clip-path: ellipse(55% 100% at 50% 100%);
+    margin-top: 0;
+}
+.wave-bottom-white {
+    height: 60px;
+    background: white;
+    clip-path: ellipse(55% 100% at 50% 100%);
+    margin-top: 0;
+}
+.wave-bottom-blue {
+    height: 60px;
+    background: #1E388A;
+    clip-path: ellipse(55% 100% at 50% 100%);
+    margin-top: 0;
+}
+@media (max-width: 768px) {
+    .service-card {
+        grid-template-columns: 1fr;
+    }
+    .service-card-image {
+        min-height: 220px;
+    }
+    .service-card-content {
+        padding: 20px;
+    }
+    .service-items-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
 {{-- ═══ HERO ═══ --}}
 <section style="background:linear-gradient(135deg,#152a6b 0%,#1E388A 60%,#2d4fa3 100%);
                 padding:60px 32px 0; text-align:center; position:relative; overflow:hidden;">
 
-    {{-- Cercles décoratifs --}}
     <div style="position:absolute; top:-60px; right:-60px; width:300px; height:300px;
                 border-radius:50%; background:radial-gradient(circle, rgba(249,115,22,.15) 0%, transparent 70%);"></div>
     <div style="position:absolute; bottom:0; left:10%; width:200px; height:200px;
@@ -35,33 +100,29 @@
             expertise locale certifiée, support en français 24/7
             et tarifs adaptés aux réalités du Sahel.
         </p>
-
-        {{-- Badges catégories --}}
-        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:0; padding-bottom:40px;">
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; padding-bottom:40px;">
             @foreach([
-                ['label' => '☁️ Cloud & Infrastructure', 'color' => '#1E388A'],
-                ['label' => '🔒 Réseaux & Sécurité',     'color' => '#DC2626'],
-                ['label' => '💡 Digital & Innovation',   'color' => '#7C3AED'],
+                '☁️ Cloud & Infrastructure',
+                '🔒 Réseaux & Sécurité',
+                '💡 Digital & Innovation',
             ] as $cat)
             <span style="background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
                          color:white; padding:8px 20px; border-radius:50px;
                          font-size:13px; font-weight:600;">
-                {{ $cat['label'] }}
+                {{ $cat }}
             </span>
             @endforeach
         </div>
     </div>
 
-    {{-- Vague de transition --}}
-    <div style="height:60px; background:#F1F5F9; margin-top:0;
-                clip-path:ellipse(55% 100% at 50% 100%);"></div>
+    {{-- Vague bas hero --}}
+    <div class="wave-top"></div>
 </section>
 
 {{-- ═══ CATÉGORIE 1 : CLOUD & INFRASTRUCTURE ═══ --}}
 <section style="padding:60px 32px 20px; background:#F1F5F9;">
     <div style="max-width:1280px; margin:0 auto;">
 
-        {{-- En-tête catégorie --}}
         <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;
                     padding:20px 28px; background:white; border-radius:16px;
                     border-left:5px solid #1E388A;
@@ -83,16 +144,15 @@
                 </p>
             </div>
             <div style="margin-left:auto; background:#EEF2FF; padding:6px 16px;
-                        border-radius:50px; font-size:12px; font-weight:700; color:#1E388A;">
+                        border-radius:50px; font-size:12px; font-weight:700; color:#1E388A; white-space:nowrap;">
                 4 services
             </div>
         </div>
 
-        {{-- Services Cloud --}}
         @foreach([
             [
-                'image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=90',
-                'alt'   => 'Infrastructure cloud haute disponibilité datacenter',
+                'image' => 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=800&q=90',
+                'alt'   => 'Rack de serveurs haute performance datacenter professionnel',
                 'title' => 'Hébergement Web & Cloud',
                 'color' => '#1E388A',
                 'badge' => '✅ Haute disponibilité 99.9%',
@@ -108,7 +168,7 @@
             ],
             [
                 'image' => 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=90',
-                'alt'   => 'Infrastructure cloud managée multi-cloud',
+                'alt'   => 'Infrastructure cloud managée multi-cloud déploiement',
                 'title' => 'Infrastructure Cloud Managée',
                 'color' => '#2563EB',
                 'badge' => '✅ Multi-Cloud certifié',
@@ -124,7 +184,7 @@
             ],
             [
                 'image' => 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=90',
-                'alt'   => 'Virtualisation serveurs VMware Hyper-V',
+                'alt'   => 'Virtualisation serveurs circuit imprimé technologie',
                 'title' => 'Virtualisation & Serveurs',
                 'color' => '#7C3AED',
                 'badge' => '✅ VMware & Hyper-V certifié',
@@ -133,7 +193,7 @@
                     'Virtualisation de serveurs & postes',
                     'Migration vers environnement virtualisé',
                     'Gestion des snapshots & sauvegardes',
-                    'Haute disponibilité & basculement automatique',
+                    'Haute disponibilité & basculement auto',
                     'Dimensionnement & optimisation ressources',
                     'Administration à distance sécurisée',
                 ],
@@ -143,30 +203,23 @@
                 'alt'   => 'Email professionnel messagerie sécurisée entreprise',
                 'title' => 'Email Professionnel',
                 'color' => '#0284C7',
-                'badge' => '✅ Anti-spam & conformité RGPD',
+                'badge' => '✅ Anti-spam & conformité',
                 'desc'  => 'Offrez à votre organisation une messagerie professionnelle sécurisée avec votre propre nom de domaine. Solution clé en main incluant protection avancée, suite collaborative, archivage légal et migration sans interruption depuis vos anciens outils.',
                 'items' => [
                     'Email @votredomaine.com',
                     'Protection anti-spam & anti-phishing',
                     'Suite collaborative (calendrier, contacts)',
                     'Archivage & recherche avancée',
-                    'Webmail responsive & application mobile',
+                    'Webmail responsive & app mobile',
                     'Migration sans interruption de service',
                 ],
             ],
-        ] as $index => $svc)
-        <div style="display:grid; grid-template-columns:380px 1fr; gap:0;
-                    background:white; border-radius:20px; overflow:hidden;
-                    margin-bottom:24px; box-shadow:0 4px 24px rgba(0,0,0,.06);
-                    border:1px solid #e2e8f0;">
-
-            {{-- Image gauche --}}
-            <div style="position:relative; min-height:320px; overflow:hidden;">
-                <img src="{{ $svc['image'] }}" alt="{{ $svc['alt'] }}"
-                     loading="lazy"
-                     style="width:100%; height:100%; object-fit:cover; display:block;">
+        ] as $svc)
+        <div class="service-card">
+            <div class="service-card-image">
+                <img src="{{ $svc['image'] }}" alt="{{ $svc['alt'] }}" loading="lazy">
                 <div style="position:absolute; inset:0;
-                            background:linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.2) 50%, transparent 100%);">
+                            background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.2) 50%, transparent 100%);">
                 </div>
                 <div style="position:absolute; top:16px; left:16px;">
                     <span style="background:{{ $svc['color'] }}; color:white;
@@ -177,25 +230,21 @@
                 </div>
                 <div style="position:absolute; bottom:20px; left:20px; right:20px;">
                     <h3 style="font-family:'Sora',sans-serif; font-weight:800;
-                               color:white; font-size:1.4rem; margin:0;
+                               color:white; font-size:1.3rem; margin:0;
                                text-shadow:0 2px 8px rgba(0,0,0,.5);">
                         {{ $svc['title'] }}
                     </h3>
                 </div>
             </div>
-
-            {{-- Contenu droite --}}
-            <div style="padding:36px;">
+            <div class="service-card-content">
                 <p style="color:#374151; font-size:15px; line-height:1.8; margin-bottom:24px;">
                     {{ $svc['desc'] }}
                 </p>
-
                 <p style="color:#6B7280; font-size:12px; font-weight:700;
                            text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">
                     Ce qui est inclus
                 </p>
-
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:28px;">
+                <div class="service-items-grid">
                     @foreach($svc['items'] as $item)
                     <div style="display:flex; align-items:flex-start; gap:10px;">
                         <div style="width:20px; height:20px; border-radius:50%;
@@ -210,7 +259,6 @@
                     </div>
                     @endforeach
                 </div>
-
                 <a href="{{ route('contact') }}"
                    style="display:inline-flex; align-items:center; gap:8px;
                           background:{{ $svc['color'] }}; color:white;
@@ -229,12 +277,19 @@
     </div>
 </section>
 
+{{-- Vague transition Cloud → Réseaux --}}
+<div style="background:#F1F5F9; line-height:0;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+        <path d="M0,60 C360,0 1080,0 1440,60 L1440,60 L0,60 Z" fill="white"/>
+    </svg>
+</div>
+
 {{-- ═══ CATÉGORIE 2 : RÉSEAUX & SÉCURITÉ ═══ --}}
-<section style="padding:40px 32px 20px; background:#F1F5F9;">
+<section style="padding:40px 32px 20px; background:white;">
     <div style="max-width:1280px; margin:0 auto;">
 
         <div style="display:flex; align-items:center; gap:16px; margin-bottom:40px;
-                    padding:20px 28px; background:white; border-radius:16px;
+                    padding:20px 28px; background:#FFF5F5; border-radius:16px;
                     border-left:5px solid #DC2626;
                     box-shadow:0 2px 12px rgba(220,38,38,.08);">
             <div style="width:56px; height:56px; border-radius:14px; background:#DC2626;
@@ -250,11 +305,11 @@
                 <h2 style="font-family:'Sora',sans-serif; font-weight:800; color:#DC2626;
                            font-size:1.5rem; margin:0 0 4px;">🔒 Réseaux & Sécurité</h2>
                 <p style="color:#6B7280; font-size:14px; margin:0;">
-                    Connectivité sécurisée, protection avancée et surveillance permanente de vos infrastructures
+                    Connectivité sécurisée, protection avancée et surveillance permanente
                 </p>
             </div>
             <div style="margin-left:auto; background:#FFF0F0; padding:6px 16px;
-                        border-radius:50px; font-size:12px; font-weight:700; color:#DC2626;">
+                        border-radius:50px; font-size:12px; font-weight:700; color:#DC2626; white-space:nowrap;">
                 4 services
             </div>
         </div>
@@ -262,14 +317,14 @@
         @foreach([
             [
                 'image' => 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=90',
-                'alt'   => 'VPN interconnexion agences bureaux sécurisé',
+                'alt'   => 'VPN interconnexion agences bureaux réseau sécurisé',
                 'title' => 'Interconnexion & Agences',
                 'color' => '#F97316',
                 'badge' => '✅ Chiffrement AES-256',
                 'desc'  => 'Reliez de façon sécurisée l\'ensemble de vos sites, agences et équipes distantes via des tunnels chiffrés haute disponibilité. Notre équipe d\'ingénieurs certifiés déploie, configure et monitore votre connectivité 24/7 depuis notre NOC à Niamey — idéal pour banques, ONG, administrations et réseaux d\'agences.',
                 'items' => [
                     'VPN site-à-site inter-agences',
-                    'Accès distant sécurisé pour équipes',
+                    'Accès distant sécurisé équipes',
                     'Chiffrement bout-en-bout AES-256',
                     'Haute disponibilité & redondance',
                     'Monitoring & supervision NOC 24/7',
@@ -278,7 +333,7 @@
             ],
             [
                 'image' => 'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=800&q=90',
-                'alt'   => 'Administration réseaux LAN WAN ingénieurs certifiés',
+                'alt'   => 'Administration réseaux câbles LAN WAN ingénieurs',
                 'title' => 'Administration Réseaux',
                 'color' => '#059669',
                 'badge' => '✅ Ingénieurs CCNA/CCNP certifiés',
@@ -288,53 +343,48 @@
                     'Configuration LAN/WAN & VLAN',
                     'Routage & QoS optimisés',
                     'Administration switches & routeurs',
-                    'Segmentation & politique de sécurité réseau',
-                    'Intervention sur site à Niamey & régions',
+                    'Segmentation & politique sécurité réseau',
+                    'Intervention sur site à Niamey',
                 ],
             ],
             [
                 'image' => 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=90',
-                'alt'   => 'Cybersécurité protection données systèmes',
+                'alt'   => 'Cybersécurité protection données cadenas numérique',
                 'title' => 'Cybersécurité',
                 'color' => '#DC2626',
                 'badge' => '✅ Standards ISO 27001',
                 'desc'  => 'Protégez vos systèmes, données et réputation face aux cybermenaces croissantes. De l\'audit initial à la mise en place de solutions de protection adaptées, notre équipe vous accompagne avec une approche alignée sur les standards internationaux et les réglementations locales.',
                 'items' => [
                     'Audit de sécurité & analyse de risques',
-                    'Pare-feu & systèmes de détection d\'intrusion',
+                    'Pare-feu & détection d\'intrusion',
                     'Protection anti-DDoS & anti-malware',
                     'Gestion des accès & authentification forte',
-                    'Formation & sensibilisation de vos équipes',
+                    'Formation & sensibilisation équipes',
                     'Veille sécurité & rapports mensuels',
                 ],
             ],
             [
                 'image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=90',
-                'alt'   => 'NOC supervision monitoring infrastructure 24/7',
+                'alt'   => 'NOC supervision monitoring infrastructure tableau de bord',
                 'title' => 'Supervision & Monitoring NOC',
                 'color' => '#D97706',
                 'badge' => '✅ NOC Niamey 24/7',
-                'desc'  => 'Votre infrastructure surveillée en permanence depuis notre Centre d\'Opérations Réseau (NOC) à Niamey. Détection proactive des incidents, alertes en temps réel et intervention immédiate — avant que vos activités ne soient impactées. Visibilité complète sur tous vos systèmes depuis un seul tableau de bord.',
+                'desc'  => 'Votre infrastructure surveillée en permanence depuis notre Centre d\'Opérations Réseau (NOC) à Niamey. Détection proactive des incidents, alertes en temps réel et intervention immédiate — avant que vos activités ne soient impactées.',
                 'items' => [
                     'Surveillance continue de l\'infrastructure',
                     'Détection proactive des incidents',
                     'Alertes & escalade automatisées',
                     'Tableau de bord de disponibilité',
-                    'Métriques de performance en temps réel',
+                    'Métriques de performance temps réel',
                     'Rapports mensuels détaillés',
                 ],
             ],
         ] as $svc)
-        <div style="display:grid; grid-template-columns:380px 1fr; gap:0;
-                    background:white; border-radius:20px; overflow:hidden;
-                    margin-bottom:24px; box-shadow:0 4px 24px rgba(0,0,0,.06);
-                    border:1px solid #e2e8f0;">
-            <div style="position:relative; min-height:320px; overflow:hidden;">
-                <img src="{{ $svc['image'] }}" alt="{{ $svc['alt'] }}"
-                     loading="lazy"
-                     style="width:100%; height:100%; object-fit:cover; display:block;">
+        <div class="service-card">
+            <div class="service-card-image">
+                <img src="{{ $svc['image'] }}" alt="{{ $svc['alt'] }}" loading="lazy">
                 <div style="position:absolute; inset:0;
-                            background:linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.2) 50%, transparent 100%);">
+                            background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.2) 50%, transparent 100%);">
                 </div>
                 <div style="position:absolute; top:16px; left:16px;">
                     <span style="background:{{ $svc['color'] }}; color:white;
@@ -345,13 +395,13 @@
                 </div>
                 <div style="position:absolute; bottom:20px; left:20px; right:20px;">
                     <h3 style="font-family:'Sora',sans-serif; font-weight:800;
-                               color:white; font-size:1.4rem; margin:0;
+                               color:white; font-size:1.3rem; margin:0;
                                text-shadow:0 2px 8px rgba(0,0,0,.5);">
                         {{ $svc['title'] }}
                     </h3>
                 </div>
             </div>
-            <div style="padding:36px;">
+            <div class="service-card-content">
                 <p style="color:#374151; font-size:15px; line-height:1.8; margin-bottom:24px;">
                     {{ $svc['desc'] }}
                 </p>
@@ -359,7 +409,7 @@
                            text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">
                     Ce qui est inclus
                 </p>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:28px;">
+                <div class="service-items-grid">
                     @foreach($svc['items'] as $item)
                     <div style="display:flex; align-items:flex-start; gap:10px;">
                         <div style="width:20px; height:20px; border-radius:50%;
@@ -391,6 +441,13 @@
         @endforeach
     </div>
 </section>
+
+{{-- Vague transition Réseaux → Digital --}}
+<div style="background:white; line-height:0;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+        <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#F1F5F9"/>
+    </svg>
+</div>
 
 {{-- ═══ CATÉGORIE 3 : DIGITAL & INNOVATION ═══ --}}
 <section style="padding:40px 32px 60px; background:#F1F5F9;">
@@ -413,11 +470,11 @@
                 <h2 style="font-family:'Sora',sans-serif; font-weight:800; color:#7C3AED;
                            font-size:1.5rem; margin:0 0 4px;">💡 Digital & Innovation</h2>
                 <p style="color:#6B7280; font-size:14px; margin:0;">
-                    Développement, gestion intégrée et transformation numérique de votre organisation
+                    Développement, gestion intégrée et transformation numérique
                 </p>
             </div>
             <div style="margin-left:auto; background:#F5F3FF; padding:6px 16px;
-                        border-radius:50px; font-size:12px; font-weight:700; color:#7C3AED;">
+                        border-radius:50px; font-size:12px; font-weight:700; color:#7C3AED; white-space:nowrap;">
                 4 services
             </div>
         </div>
@@ -425,7 +482,7 @@
         @foreach([
             [
                 'image' => 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=90',
-                'alt'   => 'Développement applications web mobile sur mesure',
+                'alt'   => 'Développement applications web mobile code programmation',
                 'title' => 'Développement Applications',
                 'color' => '#7C3AED',
                 'badge' => '✅ Livraison dans les délais',
@@ -434,9 +491,9 @@
                     'Sites web & applications sur mesure',
                     'Applications mobiles iOS & Android',
                     'APIs REST & intégrations systèmes',
-                    'Pipeline CI/CD & déploiement automatisé',
-                    'Tests, qualité & documentation complète',
-                    'Maintenance évolutive & support inclus',
+                    'Pipeline CI/CD & déploiement auto',
+                    'Tests, qualité & documentation',
+                    'Maintenance évolutive & support',
                 ],
             ],
             [
@@ -457,47 +514,42 @@
             ],
             [
                 'image' => 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=90',
-                'alt'   => 'Support maintenance IT infogérance assistance technique',
+                'alt'   => 'Support maintenance IT infogérance assistance technique équipe',
                 'title' => 'Support & Maintenance IT',
                 'color' => '#D97706',
                 'badge' => '✅ SLA garanti par contrat',
-                'desc'  => 'Votre informatique entre de bonnes mains — intervention rapide, maintenance proactive et rapport mensuel inclus. Notre équipe locale à Niamey assure la continuité de vos services pour que vous vous concentriez sur votre cœur de métier sans vous soucier de l\'IT.',
+                'desc'  => 'Votre informatique entre de bonnes mains — intervention rapide, maintenance proactive et rapport mensuel inclus. Notre équipe locale à Niamey assure la continuité de vos services pour que vous vous concentriez sur votre cœur de métier.',
                 'items' => [
                     'Support technique en français 24/7',
                     'SLA garanti & temps de réponse défini',
                     'Infogérance complète ou partielle',
-                    'Mises à jour & correctifs de sécurité',
+                    'Mises à jour & correctifs sécurité',
                     'Rapport mensuel d\'activité détaillé',
                     'Hotline dédiée & ticketing',
                 ],
             ],
             [
                 'image' => 'https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&q=90',
-                'alt'   => 'Conseil transformation digitale stratégie IA innovation',
+                'alt'   => 'Conseil transformation digitale stratégie innovation IA',
                 'title' => 'Conseil & Transformation Digitale',
                 'color' => '#BE185D',
                 'badge' => '✅ IA & Automatisation incluses',
-                'desc'  => 'Accompagnez votre organisation dans sa transformation numérique avec une approche stratégique et opérationnelle. De l\'audit initial à la feuille de route digitale, en passant par la formation de vos équipes et l\'intégration discrète de l\'intelligence artificielle dans vos processus métier.',
+                'desc'  => 'Accompagnez votre organisation dans sa transformation numérique avec une approche stratégique et opérationnelle. De l\'audit initial à la feuille de route digitale, en passant par la formation de vos équipes et l\'intégration de l\'intelligence artificielle dans vos processus métier.',
                 'items' => [
-                    'Audit & stratégie de transformation digitale',
-                    'Feuille de route numérique personnalisée',
-                    'Formation & montée en compétences équipes',
-                    'Automatisation des processus répétitifs',
+                    'Audit & stratégie digitale',
+                    'Feuille de route numérique',
+                    'Formation & montée en compétences',
+                    'Automatisation des processus',
                     'Intégration de l\'IA dans vos workflows',
-                    'Accompagnement & suivi de la transformation',
+                    'Accompagnement & suivi continu',
                 ],
             ],
         ] as $svc)
-        <div style="display:grid; grid-template-columns:380px 1fr; gap:0;
-                    background:white; border-radius:20px; overflow:hidden;
-                    margin-bottom:24px; box-shadow:0 4px 24px rgba(0,0,0,.06);
-                    border:1px solid #e2e8f0;">
-            <div style="position:relative; min-height:320px; overflow:hidden;">
-                <img src="{{ $svc['image'] }}" alt="{{ $svc['alt'] }}"
-                     loading="lazy"
-                     style="width:100%; height:100%; object-fit:cover; display:block;">
+        <div class="service-card">
+            <div class="service-card-image">
+                <img src="{{ $svc['image'] }}" alt="{{ $svc['alt'] }}" loading="lazy">
                 <div style="position:absolute; inset:0;
-                            background:linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.2) 50%, transparent 100%);">
+                            background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.2) 50%, transparent 100%);">
                 </div>
                 <div style="position:absolute; top:16px; left:16px;">
                     <span style="background:{{ $svc['color'] }}; color:white;
@@ -508,13 +560,13 @@
                 </div>
                 <div style="position:absolute; bottom:20px; left:20px; right:20px;">
                     <h3 style="font-family:'Sora',sans-serif; font-weight:800;
-                               color:white; font-size:1.4rem; margin:0;
+                               color:white; font-size:1.3rem; margin:0;
                                text-shadow:0 2px 8px rgba(0,0,0,.5);">
                         {{ $svc['title'] }}
                     </h3>
                 </div>
             </div>
-            <div style="padding:36px;">
+            <div class="service-card-content">
                 <p style="color:#374151; font-size:15px; line-height:1.8; margin-bottom:24px;">
                     {{ $svc['desc'] }}
                 </p>
@@ -522,7 +574,7 @@
                            text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">
                     Ce qui est inclus
                 </p>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:28px;">
+                <div class="service-items-grid">
                     @foreach($svc['items'] as $item)
                     <div style="display:flex; align-items:flex-start; gap:10px;">
                         <div style="width:20px; height:20px; border-radius:50%;
@@ -555,6 +607,13 @@
     </div>
 </section>
 
+{{-- Vague transition Digital → Pourquoi nous --}}
+<div style="background:#F1F5F9; line-height:0;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+        <path d="M0,60 C360,0 1080,0 1440,60 L1440,60 L0,60 Z" fill="white"/>
+    </svg>
+</div>
+
 {{-- ═══ POURQUOI NOUS ═══ --}}
 <section style="padding:80px 32px; background:white;">
     <div style="max-width:1280px; margin:0 auto;">
@@ -573,18 +632,18 @@
             </p>
         </div>
 
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px;">
             @foreach([
                 [
                     'color' => '#1E388A',
                     'title' => 'Expertise Certifiée & Multi-domaines',
-                    'desc'  => 'Certifications AWS, Azure, Kubernetes, CCNA/CCNP, VMware — une expertise rare au Niger couvrant cloud, réseaux, sécurité et DevOps. Ingénieurs formés en France et à l\'international, au service de vos projets locaux.',
+                    'desc'  => 'AWS, Azure, Kubernetes, CCNA/CCNP, VMware — une expertise rare au Niger couvrant cloud, réseaux, sécurité et DevOps. Ingénieurs certifiés formés à l\'international, au service de vos projets locaux.',
                     'svg'   => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="36" height="36"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/></svg>',
                 ],
                 [
                     'color' => '#F97316',
                     'title' => 'Culture DevOps & Automatisation',
-                    'desc'  => 'CI/CD pipelines, Infrastructure-as-Code, conteneurisation Docker/Kubernetes — nous apportons les meilleures pratiques DevOps mondiales à vos projets au Niger. Déploiements rapides, stables et reproductibles.',
+                    'desc'  => 'CI/CD pipelines, Infrastructure-as-Code, conteneurisation Docker/Kubernetes — nous apportons les meilleures pratiques DevOps mondiales à vos projets. Déploiements rapides, stables et reproductibles.',
                     'svg'   => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="36" height="36"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg>',
                 ],
                 [
@@ -612,15 +671,13 @@
                     'svg'   => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="36" height="36"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>',
                 ],
             ] as $item)
-            <div style="padding:28px; border-radius:16px; border:1.5px solid #e2e8f0;
-                        transition:all .3s;"
+            <div style="padding:28px; border-radius:16px; border:1.5px solid #e2e8f0; transition:all .3s;"
                  onmouseover="this.style.borderColor='{{ $item['color'] }}';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'"
                  onmouseout="this.style.borderColor='#e2e8f0';this.style.transform='none';this.style.boxShadow='none'">
                 <div style="width:72px; height:72px; border-radius:20px;
                             background:{{ $item['color'] }}; display:flex;
                             align-items:center; justify-content:center;
-                            margin-bottom:20px;
-                            box-shadow:0 8px 24px {{ $item['color'] }}40;">
+                            margin-bottom:20px; box-shadow:0 8px 24px {{ $item['color'] }}40;">
                     {!! $item['svg'] !!}
                 </div>
                 <h3 style="font-family:'Sora',sans-serif; font-weight:700;
@@ -636,8 +693,15 @@
     </div>
 </section>
 
+{{-- Vague transition Pourquoi nous → CTA --}}
+<div style="background:white; line-height:0;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+        <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#1E388A"/>
+    </svg>
+</div>
+
 {{-- ═══ CTA FINAL ═══ --}}
-<section style="padding:80px 32px; background:linear-gradient(135deg,#152a6b,#1E388A); text-align:center; position:relative; overflow:hidden;">
+<section style="padding:60px 32px 80px; background:linear-gradient(135deg,#152a6b,#1E388A); text-align:center; position:relative; overflow:hidden;">
     <div style="position:absolute; top:-40px; right:-40px; width:200px; height:200px;
                 border-radius:50%; background:radial-gradient(circle, rgba(249,115,22,.2) 0%, transparent 70%);"></div>
     <div style="position:absolute; bottom:-40px; left:-40px; width:200px; height:200px;
