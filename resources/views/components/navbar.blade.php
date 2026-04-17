@@ -15,8 +15,10 @@
     background: rgba(249,115,22,.08);
     border-bottom: 2px solid #F97316;
 }
-
-/* Mobile menu */
+.nav-link.active {
+    color: #F97316;
+    border-bottom: 2px solid #F97316;
+}
 .mobile-menu {
     display: none;
     flex-direction: column;
@@ -39,8 +41,6 @@
     color: #F97316;
 }
 .mobile-menu.open { display: flex; }
-
-/* Burger button */
 .burger {
     display: none;
     flex-direction: column;
@@ -58,7 +58,6 @@
     border-radius: 2px;
     transition: all .3s;
 }
-
 @media (max-width: 768px) {
     .nav-desktop { display: none !important; }
     .burger { display: flex !important; }
@@ -92,24 +91,26 @@
                 @foreach([
                     ['route' => 'home',     'label' => 'Accueil'],
                     ['route' => 'services', 'label' => 'Nos Services'],
-                    ['route' => 'vpn',      'label' => 'VPN & Agences'],
+                    ['route' => 'vpn',      'label' => 'Interconnexion & VPN'],
                     ['route' => 'about',    'label' => 'Pourquoi Nous'],
-                    ['route' => 'contact',  'label' => 'Notre Équipe'],
+                    ['route' => 'contact',  'label' => 'Contact'],
                 ] as $link)
-                <a href="{{ route($link['route']) }}" class="nav-link">
+                <a href="{{ route($link['route']) }}"
+                   class="nav-link {{ request()->routeIs($link['route']) ? 'active' : '' }}">
                     {{ $link['label'] }}
                 </a>
                 @endforeach
             </div>
 
-            {{-- Bouton Contact desktop --}}
+            {{-- Bouton CTA desktop --}}
             <a href="{{ route('contact') }}"
                class="nav-desktop"
-               style="display:inline-block; background:#F97316; color:white;
+               style="display:inline-flex; align-items:center; gap:8px;
+                      background:#F97316; color:white;
                       font-weight:700; padding:10px 24px; border-radius:10px;
                       text-decoration:none; font-size:14px; flex-shrink:0;
                       box-shadow:0 4px 12px rgba(249,115,22,.3);">
-                Contactez-nous
+                📱 Nous contacter
             </a>
 
             {{-- Burger mobile --}}
@@ -124,17 +125,17 @@
         <div class="mobile-menu" id="mobile-menu">
             @foreach([
                 ['route' => 'home',     'label' => '🏠 Accueil'],
-                ['route' => 'services', 'label' => '⚙ Nos Services'],
-                ['route' => 'vpn',      'label' => '🔒 VPN & Agences'],
+                ['route' => 'services', 'label' => '⚙️ Nos Services'],
+                ['route' => 'vpn',      'label' => '🔒 Interconnexion & VPN'],
                 ['route' => 'about',    'label' => '💡 Pourquoi Nous'],
-                ['route' => 'contact',  'label' => '👥 Notre Équipe'],
+                ['route' => 'contact',  'label' => '📞 Contact'],
             ] as $link)
             <a href="{{ route($link['route']) }}">{{ $link['label'] }}</a>
             @endforeach
             <a href="{{ route('contact') }}"
                style="background:#F97316; color:white; text-align:center;
                       margin-top:8px; font-weight:700;">
-                Contactez-nous →
+                Nous contacter →
             </a>
         </div>
     </div>
@@ -148,7 +149,6 @@ function toggleMenu() {
     const b2 = document.getElementById('b2');
     const b3 = document.getElementById('b3');
     menu.classList.toggle('open');
-
     if (menu.classList.contains('open')) {
         b1.style.transform = 'rotate(45deg) translate(5px, 5px)';
         b2.style.opacity = '0';
