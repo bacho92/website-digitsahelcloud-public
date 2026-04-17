@@ -10,7 +10,7 @@
 ![Cloudflare](https://img.shields.io/badge/Cloudflare-SSL%20Full%20Strict-F38020?style=for-the-badge&logo=cloudflare)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?style=for-the-badge&logo=githubactions)
 
-**Votre Partenaire Cloud au Sahel 🇳🇪**
+**Votre Partenaire IT de Confiance au Sahel 🇳🇪**
 
 [🌐 digitsahelcloud.com](https://digitsahelcloud.com) · [📧 admin-dsc@digitsahelcloud.com](mailto:admin-dsc@digitsahelcloud.com) · [📱 +227 70810113](tel:+22770810113)
 
@@ -23,6 +23,7 @@
 - [Présentation](#-présentation)
 - [Stack technique](#-stack-technique)
 - [Architecture](#-architecture)
+- [Pages du site](#-pages-du-site)
 - [Structure du projet](#-structure-du-projet)
 - [Phase 1 — Infrastructure locale Vagrant](#-phase-1--infrastructure-locale-vagrant)
 - [Phase 2 — Design System](#-phase-2--design-system)
@@ -42,29 +43,21 @@
 
 ## 🎯 Présentation
 
-**DigitSahelCloud** est le premier Managed Service Provider (MSP) nigérien spécialisé dans la fourniture de services numériques locaux, fiables et abordables aux entreprises, startups, institutions et administrations du Niger et de la sous-région sahélienne.
+**DigitSahelCloud** est le premier Managed Service Provider (MSP) nigérien spécialisé dans la fourniture de services IT locaux, fiables et abordables aux entreprises, institutions, ONG et administrations du Niger et de la sous-région sahélienne.
 
-### Pages du site
+### Règle d'or du contenu
+> ❌ Ne jamais parler de nos outils — ✅ Toujours parler des bénéfices client
 
-| Page | URL | Description |
-|------|-----|-------------|
-| Accueil | `/` | Hero, services, VPN highlight, pourquoi nous, CTA |
-| Nos Services | `/services` | 8 services détaillés avec photos HD Unsplash |
-| VPN & Agences | `/vpn` | Architecture VPN, cas d'usage |
-| À propos | `/about` | Histoire, vision, mission, valeurs, équipe |
-| Contact | `/contact` | Formulaire complet + coordonnées |
-| Admin | `/admin-dsc` | Panel Filament — Messages reçus |
+### Secteurs servis
 
-### 8 Services proposés
-
-1. ☁️ Hébergement Web & Cloud
-2. 🌐 VPN & Interconnexion Agences (AWS Direct Connect + Azure VPN)
-3. ⚙️ Développement Applications
-4. 🛡️ Cybersécurité
-5. 📊 ERP & Gestion d'Entreprise
-6. ✉️ Email Professionnel
-7. 🛠️ Support & Maintenance IT
-8. 💡 Conseil en Transformation Digitale
+| Secteur | Besoins principaux |
+|---------|-------------------|
+| 🏦 Banques & Microfinance | VPN inter-agences, cybersécurité, conformité |
+| 🎓 Éducation & Universités | Interconnexion campus, applications métier |
+| 🏛️ Administrations Publiques | Données sécurisées, multi-sites |
+| 🌍 ONG & Associations | Bureaux terrain, cloud léger |
+| 🏪 Commerce & Distribution | ERP, synchronisation agences |
+| 🏥 Santé & Hôpitaux | Données médicales, multi-sites |
 
 ---
 
@@ -86,6 +79,7 @@
 | CDN / SSL | Cloudflare | Full Strict |
 | Email | Zoho Mail | SMTP + DKIM + SPF + DMARC |
 | CI/CD | GitHub Actions | Auto-deploy sur push main |
+| Analytics | Google Analytics | G-N6G7N5H4W7 |
 
 ### Design System
 
@@ -126,7 +120,7 @@ AWS EC2 — 15.236.9.255 (Elastic IP) — eu-west-3 (Paris)
 └─────────────────────────────────────────────┘
 ```
 
-### Volumes Docker
+### Volumes Docker (persistance)
 
 | Volume / Mount | Contenu |
 |----------------|---------|
@@ -139,6 +133,46 @@ AWS EC2 — 15.236.9.255 (Elastic IP) — eu-west-3 (Paris)
 | `mysql_data` | Données MySQL persistantes |
 | `storage` | Fichiers uploadés |
 | `logs` | Logs applicatifs |
+
+---
+
+## 📄 Pages du site
+
+| Page | URL | Description |
+|------|-----|-------------|
+| Accueil | `/` | Hero 3 images HD + compteurs animés + secteurs + VPN + Pourquoi nous |
+| Nos Services | `/services` | 12 services en 3 catégories avec images HD |
+| Interconnexion & Réseaux | `/vpn` | Architecture NOC + cas d'usage + 4 garanties |
+| Pourquoi Nous | `/about` | Histoire + CV fondateur + roadmap souveraineté |
+| Contact | `/contact` | Formulaire 8 champs + coordonnées + images HD |
+| Admin | `/admin-dsc` | Panel Filament — Messages reçus |
+
+### Navigation (Navbar)
+
+```
+Accueil | Nos Services | Interconnexion & Réseaux | Pourquoi Nous | Contact
+                                                                  [Contactez-nous]
+```
+
+### 12 Services organisés en 3 catégories
+
+**☁️ Cloud & Infrastructure**
+1. Hébergement Web & Cloud
+2. Infrastructure Cloud Managée
+3. Virtualisation & Serveurs
+4. Email Professionnel
+
+**🔒 Réseaux & Sécurité**
+5. Interconnexion & Agences
+6. Administration Réseaux
+7. Cybersécurité
+8. Supervision & Monitoring NOC
+
+**💡 Digital & Innovation**
+9. Développement Applications
+10. ERP & Gestion
+11. Support & Maintenance IT
+12. Conseil & Transformation Digitale (IA discrète)
 
 ---
 
@@ -164,18 +198,18 @@ website-digitsahelcloud/
 ├── resources/views/
 │   ├── layout/app.blade.php
 │   ├── components/
-│   │   ├── navbar.blade.php
+│   │   ├── navbar.blade.php    ← Navbar avec lien actif auto
 │   │   └── footer.blade.php
 │   └── pages/
-│       ├── home.blade.php
-│       ├── services.blade.php
-│       ├── vpn.blade.php
-│       ├── about.blade.php
-│       └── contact.blade.php
-├── .github/workflows/deploy.yml    ← CI/CD
+│       ├── home.blade.php      ← Accueil + compteurs animés + secteurs
+│       ├── services.blade.php  ← 12 services + responsive mobile
+│       ├── vpn.blade.php       ← Interconnexion + NOC Niamey
+│       ├── about.blade.php     ← CV fondateur + roadmap
+│       └── contact.blade.php   ← Formulaire + WhatsApp
+├── .github/workflows/deploy.yml    ← CI/CD GitHub Actions
 ├── docker-compose.yml
 ├── Dockerfile
-├── Vagrantfile                     ← Environnement local
+├── Vagrantfile
 └── .env                            ← Variables (⚠️ gitignore)
 ```
 
@@ -183,25 +217,13 @@ website-digitsahelcloud/
 
 ## ✅ Phase 1 — Infrastructure locale Vagrant
 
-### Prérequis
-
-- Vagrant 2.4+
-- VirtualBox 7.2+
-- Git
-- Node.js 20+
-
-### Démarrage
-
 ```bash
 # Cloner le repo
 git clone https://github.com/bacho92/website-digitsahelcloud.git
 cd website-digitsahelcloud
 
 # Lancer la VM
-vagrant up
-
-# Se connecter
-vagrant ssh
+vagrant up && vagrant ssh
 
 # Dans la VM
 cd /var/www/digitsahelcloud
@@ -212,144 +234,91 @@ php artisan migrate
 
 **Accès local :** `http://192.168.56.10`
 
-### Commandes Vagrant
-
-```bash
-vagrant up        # Démarrer la VM
-vagrant ssh       # Se connecter
-vagrant halt      # Éteindre
-vagrant reload    # Redémarrer
-vagrant destroy   # Supprimer
-```
-
-### Workflow Git
-
-```
-main        → Production (AWS EC2)
-develop     → Intégration
-feature/*   → Développement
-```
-
 ---
 
 ## ✅ Phase 2 — Design System
 
 - Tailwind CSS v4 avec couleurs DSC (`#1E388A`, `#F97316`)
-- Layout `app.blade.php` avec head SEO complet
-- Navbar sticky responsive + menu hamburger mobile
-- Footer bicolore (bleu + blanc)
+- Layout `app.blade.php` avec Google Analytics `G-N6G7N5H4W7`
+- Navbar sticky avec lien actif automatique
+- Footer avec vague SVG de transition
 - Fonts : Sora (titres) + Plus Jakarta Sans (body)
-- Classes : `.btn-primary`, `.section-tag`, `.section-title`
 
 ---
 
 ## ✅ Phase 3 — Pages du site
 
-| Page | Sections |
-|------|---------|
-| Accueil | Hero, stats, 8 services SVG, VPN highlight, Pourquoi nous, CTA |
-| Services | 8 services avec photos HD + descriptions pro + "En savoir plus" |
-| VPN | Schéma architecture, AWS/Azure, cas d'usage par secteur |
-| À propos | Vision/Mission, valeurs, équipe, chiffres clés, roadmap |
-| Contact | Formulaire 8 champs + coordonnées + localisation |
+| Page | Nouveautés v2 |
+|------|--------------|
+| Accueil | 3 images HD hero, compteurs animés JS, section secteurs, vagues SVG |
+| Services | 12 services 3 catégories, responsive mobile, images HD Unsplash |
+| Interconnexion | NOC Niamey, 4 garanties, vagues SVG, règle d'or appliquée |
+| À propos | Timeline CV, 6 certifications, roadmap 3 phases, stats bande |
+| Contact | Stats hero, 3 images HD, bouton WhatsApp direct, vague SVG |
 
-### Formulaire de contact
+### Formulaire de contact — 8 champs
 
-| Champ | Obligatoire | Description |
-|-------|-------------|-------------|
-| `demandeur_type` | Oui | Entreprise ou Particulier |
-| `company` | Si entreprise | Nom de l'organisation |
-| `name` | Oui | Nom complet |
-| `email` | Oui | Adresse email |
-| `phone` | Oui | Numéro WhatsApp |
-| `role` | Oui | Poste occupé (DG, IT, RH, DAF...) |
-| `service` | Oui | Service souhaité |
-| `message` | Oui | Description du besoin |
+| Champ | Obligatoire |
+|-------|-------------|
+| `demandeur_type` | Oui — Entreprise ou Particulier |
+| `company` | Si entreprise |
+| `name` | Oui |
+| `email` | Oui |
+| `phone` | Oui — WhatsApp |
+| `role` | Oui — Poste occupé |
+| `service` | Oui — 12 services disponibles |
+| `message` | Oui |
 
 ---
 
 ## ✅ Phase 4 — Backend et Email
 
 ```bash
-# Migrations
 php artisan make:migration create_contacts_table
 php artisan make:migration add_fields_to_contacts_table
 php artisan migrate
-
-# Modèle et Mail
 php artisan make:model Contact
 php artisan make:mail ContactMail
 ```
 
-### Configuration Email Zoho (`.env`)
-
-```env
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.zoho.com
-MAIL_PORT=465
-MAIL_USERNAME=admin-dsc@digitsahelcloud.com
-MAIL_PASSWORD=votre_mot_de_passe
-MAIL_ENCRYPTION=ssl
-MAIL_FROM_ADDRESS=admin-dsc@digitsahelcloud.com
-MAIL_FROM_NAME="DigitSahelCloud"
-```
-
 ### DNS Email (Cloudflare)
 
-| Type | Nom | Valeur |
-|------|-----|--------|
-| MX | @ | mx.zoho.com (10) |
-| MX | @ | mx2.zoho.com (20) |
-| MX | @ | mx3.zoho.com (50) |
-| TXT | @ | v=spf1 include:zohomail.com ~all |
-| TXT | _dmarc | v=DMARC1; p=quarantine... |
-| TXT | zmail._domainkey | v=DKIM1; k=rsa; p=... |
+| Type | Valeur |
+|------|--------|
+| MX | mx.zoho.com (10) / mx2 (20) / mx3 (50) |
+| TXT | v=spf1 include:zohomail.com ~all |
+| TXT | v=DMARC1; p=quarantine... |
+| TXT | v=DKIM1; k=rsa; p=... |
 
 ---
 
 ## ✅ Phase 5 — Panel Admin Filament
 
-```bash
-# Installation
-composer require filament/filament
-php artisan make:filament-panel admin-dsc
-php artisan make:filament-resource Contact
-php artisan make:filament-user
-```
-
-**URL Admin :** `https://digitsahelcloud.com/admin-dsc`
-
-### Fonctionnalités
-
-- Liste messages avec badges (Type, Poste, Service)
-- Filtres : lecture, type demandeur, rôle
-- Vue détaillée complète avec copyable email/WhatsApp
-- Marquage lu/non lu + badge orange non lus
-- Création manuelle désactivée
+- URL : `https://digitsahelcloud.com/admin-dsc`
+- Email : `admin-dsc@digitsahelcloud.com`
+- Bouton "New Message" désactivé (`canCreate = false`)
+- Filtres : statut lecture, type demandeur, rôle
+- Badge orange pour messages non lus
+- `canAccessPanel()` → emails `@digitsahelcloud.com` uniquement
 
 ---
 
 ## ✅ Phase 6 — SEO et Performance
 
-```html
-<!-- Meta tags dans app.blade.php -->
-<meta name="description" content="...">
-<meta property="og:title" content="...">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="{{ url()->current() }}">
-```
-
-- ✅ Sitemap XML : `/sitemap.xml`
-- ✅ Robots.txt : `/robots.txt`
-- ✅ Open Graph + Twitter Card
-- ✅ Gzip Nginx activé
-- ✅ Cache assets statiques 1 an
+- Google Analytics : `G-N6G7N5H4W7` (production uniquement)
+- Sitemap XML : `/sitemap.xml`
+- Robots.txt : `/robots.txt`
+- Open Graph + Twitter Card
+- Gzip Nginx activé
+- Cache assets statiques 1 an
+- CSP Header : `img-src` Unsplash autorisé
+- Permissions-Policy configuré
 
 ---
 
 ## ✅ Phase 7 — Déploiement Docker AWS EC2
 
-### Informations serveur
+### Serveur
 
 | Paramètre | Valeur |
 |-----------|--------|
@@ -366,28 +335,24 @@ php artisan make:filament-user
 ssh -i "digitsahelcloud-key-ec2.pem" ubuntu@15.236.9.255
 ```
 
-### Configurer le Swap (anti-crash RAM)
+### Swap (anti-crash RAM)
 
 ```bash
 sudo fallocate -l 2G /swapfile
 sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
+sudo mkswap /swapfile && sudo swapon /swapfile
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
-### Déploiement initial
+### Limites mémoire Docker
 
-```bash
-cd /var/www/digitsahelcloud
-cp .env.example .env
-nano .env                                        # Remplir les variables
-docker compose up -d
-docker compose exec app php artisan migrate --force
-docker compose exec app php artisan optimize
+```yaml
+app:   mem_limit: 400m  memswap_limit: 600m
+db:    mem_limit: 300m  memswap_limit: 500m
+redis: mem_limit: 100m  memswap_limit: 150m
 ```
 
-### Commandes Docker
+### Commandes Docker essentielles
 
 ```bash
 docker compose ps                              # État
@@ -395,14 +360,7 @@ docker compose logs --tail=50 app             # Logs
 docker compose restart app                    # Redémarrer
 docker compose down && docker compose up -d   # Relancer
 docker stats --no-stream                      # RAM/CPU
-```
-
-### Limites mémoire (`docker-compose.yml`)
-
-```yaml
-app:   mem_limit: 400m  memswap_limit: 600m
-db:    mem_limit: 300m  memswap_limit: 500m
-redis: mem_limit: 100m  memswap_limit: 150m
+docker compose exec app php artisan [cmd]     # Artisan
 ```
 
 ---
@@ -412,15 +370,10 @@ redis: mem_limit: 100m  memswap_limit: 150m
 ### SSL Cloudflare Full (Strict)
 
 ```bash
-# 1. Générer certificat Origin sur Cloudflare
-# Cloudflare → SSL/TLS → Origin Server → Create Certificate
-
-# 2. Créer les fichiers sur EC2
 mkdir -p docker/ssl
-nano docker/ssl/cert.pem   # Coller certificat
-nano docker/ssl/key.pem    # Coller clé privée
-
-# 3. Cloudflare → SSL/TLS → Overview → Full (strict)
+nano docker/ssl/cert.pem   # Certificat Cloudflare Origin
+nano docker/ssl/key.pem    # Clé privée
+# Cloudflare → SSL/TLS → Full (strict)
 ```
 
 ### Headers sécurité (nginx.conf)
@@ -432,46 +385,22 @@ add_header X-XSS-Protection          "1; mode=block"                   always;
 add_header Referrer-Policy           "strict-origin-when-cross-origin" always;
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 add_header Content-Security-Policy   "img-src 'self' https://images.unsplash.com data: blob:;" always;
+add_header Permissions-Policy        "camera=(), microphone=(), geolocation=(), payment=()" always;
 ```
 
-### Variables `.env` production
+### Scores sécurité obtenus
 
-```env
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=https://digitsahelcloud.com
-SESSION_DOMAIN=digitsahelcloud.com
-```
+| Outil | Score |
+|-------|-------|
+| Security Headers | **A** |
+| Mozilla Observatory | **B+ (80/100)** — limite Laravel/Livewire |
+| SSL Labs | **B** — normal Cloudflare |
 
 ---
 
 ## ✅ Phase 9 — Admin Filament Production
 
-### Problèmes résolus
-
-| Problème | Cause | Solution |
-|----------|-------|----------|
-| 403 Forbidden | `canAccessPanel()` manquant | Ajout dans `User.php` |
-| Assets manquants | Livewire non publié | `php artisan livewire:publish --assets` |
-| Colonnes manquantes | Migration non exécutée | `php artisan migrate --force` |
-| Code non synchronisé | Volumes non montés | Ajout volumes `docker-compose.yml` |
-
-### `app/Models/User.php`
-
-```php
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
-
-class User extends Authenticatable implements FilamentUser
-{
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return str_ends_with($this->email, '@digitsahelcloud.com');
-    }
-}
-```
-
-### Volumes permanents
+### Volumes permanents (docker-compose.yml)
 
 ```yaml
 volumes:
@@ -483,6 +412,15 @@ volumes:
   - ./docker/ssl:/etc/nginx/ssl
 ```
 
+### User.php
+
+```php
+public function canAccessPanel(Panel $panel): bool
+{
+    return str_ends_with($this->email, '@digitsahelcloud.com');
+}
+```
+
 ---
 
 ## ✅ Phase 10 — CI/CD GitHub Actions
@@ -490,15 +428,9 @@ volumes:
 ### Fonctionnement
 
 ```
-git push origin main
-      ↓
-GitHub Actions déclenche automatiquement
-      ↓
-SSH vers EC2 (clé secrète)
-      ↓
-git pull + migrate + optimize
-      ↓
-✅ Déployé en ~12 secondes
+git push origin main  →  GitHub Actions  →  SSH EC2
+→ git pull + migrate --force + optimize:clear + optimize
+→ ✅ Déployé en ~12 secondes
 ```
 
 ### GitHub Secrets
@@ -509,46 +441,17 @@ git pull + migrate + optimize
 | `EC2_USER` | ubuntu |
 | `EC2_SSH_KEY` | Clé privée SSH ED25519 |
 
-### `.github/workflows/deploy.yml`
-
-```yaml
-name: 🚀 Deploy DigitSahelCloud
-on:
-  push:
-    branches: [main]
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
-      - name: Deploy
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-            cd /var/www/digitsahelcloud
-            git pull origin main
-            docker compose exec -T app php artisan migrate --force
-            docker compose exec -T app php artisan optimize:clear
-            docker compose exec -T app php artisan optimize
-          EOF
-```
-
 ---
 
 ## 🔄 Workflow de développement
 
 ```bash
 # 1. Modifier le code dans VSCode (Ctrl+S)
-
 # 2. Committer et déployer
 git add .
 git commit -m "feat/fix/style/docs: description"
 git push origin main
-
 # ✅ Déploiement automatique en ~12 secondes !
-
 # 3. Vérifier : GitHub → Actions → ✅ vert
 ```
 
@@ -576,6 +479,16 @@ docker compose ps             # État conteneurs
 docker stats --no-stream      # RAM/CPU
 ```
 
+### Sauvegarde automatique (cron 2h du matin)
+
+```bash
+# Script : /home/ubuntu/backup.sh
+# Sauvegarde MySQL + .env
+# Rétention 7 jours
+# Log : /home/ubuntu/backups/backup.log
+crontab -l  # Vérifier le cron
+```
+
 ### En cas de panne (502/521)
 
 ```bash
@@ -601,13 +514,14 @@ docker compose exec app php artisan route:list       # Routes
 
 - ✅ SSL Cloudflare Full (Strict) + Origin Certificate 15 ans
 - ✅ APP_DEBUG false en production
-- ✅ Headers HTTP : X-Frame, HSTS, XSS, CSP, Referrer
+- ✅ Headers HTTP : X-Frame, HSTS, XSS, CSP, Referrer, Permissions-Policy
 - ✅ HTTP → HTTPS redirection 301
-- ✅ Cookies : secure + httponly
+- ✅ Cookies : secure + httponly + samesite
 - ✅ Swap 2GB anti-crash RAM
 - ✅ Limites mémoire Docker
 - ✅ MySQL innodb optimisé
 - ✅ .env, docker/ssl/, .vagrant/ dans .gitignore
+- ✅ Sauvegarde MySQL automatique quotidienne
 
 ---
 
@@ -620,6 +534,7 @@ docker compose exec app php artisan route:list       # Routes
 | 🌐 | [digitsahelcloud.com](https://digitsahelcloud.com) |
 | 📧 | [admin-dsc@digitsahelcloud.com](mailto:admin-dsc@digitsahelcloud.com) |
 | 📱 | +227 70810113 |
+| 💬 | [WhatsApp](https://wa.me/22770810113) |
 | 📍 | Niamey, République du Niger |
 | 💻 | [github.com/bacho92/website-digitsahelcloud](https://github.com/bacho92/website-digitsahelcloud) |
 
@@ -629,6 +544,6 @@ docker compose exec app php artisan route:list       # Routes
 
 **© 2026 DigitSahelCloud — Tous droits réservés**
 
-*Digitaliser le Sahel, une entreprise à la fois. 🇳🇪*
+*Connecter le Niger au monde digital, une organisation à la fois. 🇳🇪*
 
 </div>
