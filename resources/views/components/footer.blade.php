@@ -1,56 +1,170 @@
+<style>
+/* ═══ ANIMATIONS FOOTER ═══ */
+@keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,.4); }
+    50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.footer-col {
+    animation: fadeInUp .6s ease forwards;
+    opacity: 0;
+}
+.footer-col:nth-child(1) { animation-delay: .1s; }
+.footer-col:nth-child(2) { animation-delay: .2s; }
+.footer-col:nth-child(3) { animation-delay: .3s; }
+.footer-col:nth-child(4) { animation-delay: .4s; }
+
+.footer-link {
+    color: #374151;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-weight: 500;
+    transition: all .25s;
+    border-left: 2px solid transparent;
+    padding-left: 0;
+}
+.footer-link:hover {
+    color: #F97316;
+    border-left-color: #F97316;
+    padding-left: 8px;
+}
+
+.social-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all .25s;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+.social-btn:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+.brand-shimmer {
+    background: linear-gradient(90deg, #F97316 0%, #fb923c 40%, #F97316 60%, #fb923c 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    display: inline-block;
+    animation: pulse-dot 2s infinite;
+}
+
+.footer-logo-icon {
+    animation: float 4s ease-in-out infinite;
+}
+
+@media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr !important; }
+    .footer-bottom { flex-direction: column !important; text-align: center !important; }
+}
+</style>
+
 <footer>
 
-    {{-- Vague d'entrée footer --}}
-    <div style="background:#1E388A; line-height:0;">
-        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg"
-             preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
-            <path d="M0,60 C360,0 1080,0 1440,60 L1440,60 L0,60 Z" fill="#1E388A"/>
-        </svg>
-    </div>
-
-    {{-- ═══ SECTION 1 — Fond bleu foncé ═══ --}}
-    <div style="background:linear-gradient(135deg,#152a6b 0%,#1E388A 100%); padding:56px 60px 40px;">
+    {{-- ═══ FOOTER — Fond blanc ═══ --}}
+    <div style="background:white; padding:56px 60px 0;">
         <div style="max-width:1280px; margin:0 auto;">
 
-            {{-- Ligne du haut --}}
-            <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px;">
+            {{-- Trait bleu séparateur haut --}}
+            <div style="height:3px; background:linear-gradient(90deg,#1E388A,#F97316,#1E388A);
+                        border-radius:2px; margin-bottom:48px;"></div>
 
-                {{-- Logo + description --}}
-                <div>
-                    <p style="font-family:'Sora',sans-serif; font-size:24px;
-                               font-weight:800; margin-bottom:12px;">
-                        <span style="color:white;">Digit</span>
-                        <span style="color:#F97316;">Sahel</span>
-                        <span style="color:white;">Cloud</span>
-                    </p>
-                    <p style="color:rgba(255,255,255,.65); font-size:14px; line-height:1.8; margin-bottom:20px;">
+            {{-- Grille 4 colonnes --}}
+            <div class="footer-grid" style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px;">
+
+                {{-- Colonne 1 — Logo + description --}}
+                <div class="footer-col">
+                    {{-- Logo animé --}}
+                    <div class="footer-logo-icon" style="margin-bottom:16px;">
+                        <p style="font-family:'Sora',sans-serif; font-size:26px; font-weight:800; margin:0;">
+                            <span style="color:#1E388A;">Digit</span><span class="brand-shimmer">Sahel</span><span style="color:#1E388A;">Cloud</span>
+                        </p>
+                        <p style="color:#6B7280; font-size:12px; font-weight:600;
+                                   text-transform:uppercase; letter-spacing:1px; margin:4px 0 0;">
+                            Managed Service Provider
+                        </p>
+                    </div>
+
+                    <p style="color:#6B7280; font-size:14px; line-height:1.8; margin-bottom:20px; max-width:280px;">
                         Votre partenaire IT de confiance au Sahel —
                         expertise locale certifiée, support en français 24/7
                         et solutions adaptées aux réalités du Niger.
                     </p>
-                    {{-- Badge --}}
+
+                    {{-- Badge en ligne --}}
                     <div style="display:inline-flex; align-items:center; gap:8px;
-                                background:rgba(249,115,22,.15); border:1px solid rgba(249,115,22,.3);
-                                border-radius:50px; padding:8px 16px;">
-                        <span style="width:8px; height:8px; border-radius:50%;
-                                     background:#22c55e; box-shadow:0 0 6px #22c55e;
-                                     display:inline-block;"></span>
-                        <span style="color:#F97316; font-weight:700; font-size:12px;">
-                            🇳🇪 MSP Local — Niamey, Niger
+                                background:#F0FDF4; border:1px solid #BBF7D0;
+                                border-radius:50px; padding:8px 16px; margin-bottom:20px;">
+                        <span class="pulse-dot"></span>
+                        <span style="color:#059669; font-weight:700; font-size:12px;">
+                            En ligne — Niamey, Niger 🇳🇪
                         </span>
+                    </div>
+
+                    {{-- Réseaux sociaux --}}
+                    <div>
+                        <p style="color:#9CA3AF; font-size:11px; font-weight:700;
+                                   text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">
+                            Suivez-nous
+                        </p>
+                        <div style="display:flex; gap:10px;">
+                            <a href="#" class="social-btn" style="background:#1877F2;">f</a>
+                            <a href="#" class="social-btn" style="background:#0A66C2;">in</a>
+                            <a href="#" class="social-btn" style="background:#000000;">𝕏</a>
+                        </div>
                     </div>
                 </div>
 
-                {{-- Nos Services --}}
-                <div>
+                {{-- Colonne 2 — Services --}}
+                <div class="footer-col">
                     <h4 style="font-family:'Sora',sans-serif; font-weight:800;
-                               font-size:13px; color:white;
+                               font-size:13px; color:#1E388A;
                                text-transform:uppercase; letter-spacing:1.5px;
                                margin-bottom:20px; display:flex; align-items:center; gap:8px;">
-                        <span style="width:24px; height:2px; background:#F97316; display:inline-block;"></span>
+                        <span style="width:20px; height:2px; background:#F97316; display:inline-block; border-radius:2px;"></span>
                         Nos Services
                     </h4>
-                    <div style="display:flex; flex-direction:column; gap:10px;">
+                    <div style="display:flex; flex-direction:column;">
                         @foreach([
                             'Hébergement Web & Cloud',
                             'Interconnexion & Agences',
@@ -61,28 +175,24 @@
                             'Support & Maintenance',
                             'Conseil & Digital',
                         ] as $service)
-                        <a href="{{ route('services') }}"
-                           style="color:rgba(255,255,255,.6); text-decoration:none; font-size:13px;
-                                  display:flex; align-items:center; gap:8px; transition:all .2s;"
-                           onmouseover="this.style.color='#F97316';this.style.paddingLeft='4px'"
-                           onmouseout="this.style.color='rgba(255,255,255,.6)';this.style.paddingLeft='0'">
-                            <span style="color:#F97316; font-size:8px;">▶</span>
+                        <a href="{{ route('services') }}" class="footer-link">
+                            <span style="color:#F97316; font-size:8px; flex-shrink:0;">▶</span>
                             {{ $service }}
                         </a>
                         @endforeach
                     </div>
                 </div>
 
-                {{-- Navigation --}}
-                <div>
+                {{-- Colonne 3 — Navigation --}}
+                <div class="footer-col">
                     <h4 style="font-family:'Sora',sans-serif; font-weight:800;
-                               font-size:13px; color:white;
+                               font-size:13px; color:#1E388A;
                                text-transform:uppercase; letter-spacing:1.5px;
                                margin-bottom:20px; display:flex; align-items:center; gap:8px;">
-                        <span style="width:24px; height:2px; background:#F97316; display:inline-block;"></span>
+                        <span style="width:20px; height:2px; background:#F97316; display:inline-block; border-radius:2px;"></span>
                         Navigation
                     </h4>
-                    <div style="display:flex; flex-direction:column; gap:10px;">
+                    <div style="display:flex; flex-direction:column;">
                         @foreach([
                             ['route'=>'home',     'label'=>'Accueil'],
                             ['route'=>'services', 'label'=>'Nos Services'],
@@ -90,83 +200,59 @@
                             ['route'=>'about',    'label'=>'Pourquoi Nous'],
                             ['route'=>'contact',  'label'=>'Contact'],
                         ] as $link)
-                        <a href="{{ route($link['route']) }}"
-                           style="color:rgba(255,255,255,.6); text-decoration:none; font-size:13px;
-                                  display:flex; align-items:center; gap:8px; transition:all .2s;"
-                           onmouseover="this.style.color='#F97316';this.style.paddingLeft='4px'"
-                           onmouseout="this.style.color='rgba(255,255,255,.6)';this.style.paddingLeft='0'">
-                            <span style="color:#F97316; font-size:8px;">▶</span>
+                        <a href="{{ route($link['route']) }}" class="footer-link">
+                            <span style="color:#F97316; font-size:8px; flex-shrink:0;">▶</span>
                             {{ $link['label'] }}
                         </a>
                         @endforeach
                     </div>
                 </div>
 
-                {{-- Contact --}}
-                <div>
+                {{-- Colonne 4 — Contact --}}
+                <div class="footer-col">
                     <h4 style="font-family:'Sora',sans-serif; font-weight:800;
-                               font-size:13px; color:white;
+                               font-size:13px; color:#1E388A;
                                text-transform:uppercase; letter-spacing:1.5px;
                                margin-bottom:20px; display:flex; align-items:center; gap:8px;">
-                        <span style="width:24px; height:2px; background:#F97316; display:inline-block;"></span>
+                        <span style="width:20px; height:2px; background:#F97316; display:inline-block; border-radius:2px;"></span>
                         Contact
                     </h4>
                     <div style="display:flex; flex-direction:column; gap:14px;">
                         @foreach([
-                            ['icon'=>'📍','value'=>'Niamey, République du Niger'],
-                            ['icon'=>'📱','value'=>'+227 70810113'],
-                            ['icon'=>'✉️','value'=>'admin-dsc@digitsahelcloud.com'],
-                            ['icon'=>'🌐','value'=>'digitsahelcloud.com'],
+                            ['icon'=>'📍','value'=>'Niamey, République du Niger','color'=>'#1E388A'],
+                            ['icon'=>'📱','value'=>'+227 70810113','color'=>'#25D366'],
+                            ['icon'=>'✉️','value'=>'admin-dsc@digitsahelcloud.com','color'=>'#F97316'],
+                            ['icon'=>'🌐','value'=>'digitsahelcloud.com','color'=>'#0284C7'],
                         ] as $info)
-                        <div style="display:flex; align-items:flex-start; gap:10px;">
-                            <span style="font-size:15px; flex-shrink:0;">{{ $info['icon'] }}</span>
-                            <span style="color:rgba(255,255,255,.65); font-size:13px; line-height:1.5;">
+                        <div style="display:flex; align-items:flex-start; gap:10px;
+                                    padding:10px; border-radius:10px; background:#F8FAFF;
+                                    border:1px solid #EEF2FF; transition:all .25s;"
+                             onmouseover="this.style.borderColor='{{ $info['color'] }}';this.style.background='#F0F4FF'"
+                             onmouseout="this.style.borderColor='#EEF2FF';this.style.background='#F8FAFF'">
+                            <span style="font-size:16px; flex-shrink:0;">{{ $info['icon'] }}</span>
+                            <span style="color:#374151; font-size:12px; line-height:1.5; font-weight:500;">
                                 {{ $info['value'] }}
                             </span>
                         </div>
                         @endforeach
                     </div>
-
-                    {{-- Réseaux sociaux --}}
-                    <div style="margin-top:24px;">
-                        <p style="color:rgba(255,255,255,.4); font-size:11px; font-weight:700;
-                                   text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">
-                            Suivez-nous
-                        </p>
-                        <div style="display:flex; gap:10px;">
-                            @foreach([
-                                ['label'=>'f',  'bg'=>'#1877F2', 'href'=>'#'],
-                                ['label'=>'in', 'bg'=>'#0A66C2', 'href'=>'#'],
-                                ['label'=>'𝕏',  'bg'=>'#000',   'href'=>'#'],
-                            ] as $s)
-                            <a href="{{ $s['href'] }}"
-                               style="width:36px; height:36px; background:{{ $s['bg'] }};
-                                      border-radius:10px; display:flex; align-items:center;
-                                      justify-content:center; color:white; font-weight:700;
-                                      font-size:13px; text-decoration:none;
-                                      transition:all .2s; box-shadow:0 4px 12px rgba(0,0,0,.2);"
-                               onmouseover="this.style.transform='translateY(-3px)'"
-                               onmouseout="this.style.transform='none'">
-                                {{ $s['label'] }}
-                            </a>
-                            @endforeach
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            {{-- Séparateur --}}
-            <div style="height:1px; background:rgba(255,255,255,.1); margin-bottom:28px;"></div>
+            {{-- Trait bleu séparateur bas --}}
+            <div style="height:2px; background:linear-gradient(90deg,transparent,#1E388A,#F97316,#1E388A,transparent);
+                        border-radius:2px; margin-bottom:24px;"></div>
 
-            {{-- Slogan + copyright --}}
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-                <p style="color:rgba(255,255,255,.5); font-size:13px; font-style:italic;">
+            {{-- Copyright + slogan --}}
+            <div class="footer-bottom" style="display:flex; justify-content:space-between;
+                        align-items:center; flex-wrap:wrap; gap:12px; padding-bottom:32px;">
+                <p style="color:#6B7280; font-size:13px; font-style:italic; margin:0;">
                     "Connecter le Niger au monde digital, une organisation à la fois."
                 </p>
-                <p style="color:rgba(255,255,255,.4); font-size:12px;">
-                    ©{{ date('Y') }}
-                    <span style="color:white; font-weight:700;"> Digit</span><span style="color:#F97316; font-weight:700;">Sahel</span><span style="color:white; font-weight:700;">Cloud</span>
-                    <span style="color:rgba(255,255,255,.4);"> — Tous droits réservés.</span>
+                <p style="font-size:13px; margin:0;">
+                    <span style="color:#6B7280;">©{{ date('Y') }} </span>
+                    <span style="color:#1E388A; font-weight:800;">Digit</span><span style="color:#F97316; font-weight:800;">Sahel</span><span style="color:#1E388A; font-weight:800;">Cloud</span>
+                    <span style="color:#9CA3AF;"> — Tous droits réservés.</span>
                 </p>
             </div>
         </div>
