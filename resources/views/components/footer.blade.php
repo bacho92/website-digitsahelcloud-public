@@ -1,185 +1,174 @@
 <footer>
 
-    {{-- ═══ SECTION 1 — Fond bleu ═══ --}}
-    <div style="background:#1E388A; padding:48px 60px;">
-        <div style="max-width:1280px; margin:0 auto;
-                    display:grid; grid-template-columns:1fr 1fr 1fr;
-                    gap:40px; align-items:center;">
-
-            {{-- Logo + tagline --}}
-            <div>
-                <p style="font-family:'Sora',sans-serif; font-size:22px;
-                        font-weight:800; margin-bottom:8px;">
-                    <span style="color:white;">Digit</span>
-                    <span style="color:#F97316;">Sahel</span>
-                    <span style="color:white;">Cloud</span>
-                </p>
-                <p style="color:rgba(255,255,255,.7); font-size:14px; line-height:1.7;">
-                    Votre Partenaire Cloud au Sahel.<br>
-                    Infrastructure locale fiable et souveraine.
-                </p>
-            </div>
-
-            {{-- Slogan centré --}}
-            <div style="text-align:center;">
-                <div style="display:inline-block; background:rgba(249,115,22,.2);
-                            border:1px solid rgba(249,115,22,.4);
-                            border-radius:50px; padding:10px 24px; margin-bottom:16px;">
-                    <span style="color:#F97316; font-weight:700; font-size:13px;">
-                        🇳🇪 MSP Local — Niamey, Niger
-                    </span>
-                </div>
-                <p style="color:rgba(255,255,255,.8); font-size:15px;
-                           font-style:italic; line-height:1.6;">
-                    "Digitaliser le Sahel,<br>
-                    <span style="color:#F97316; font-weight:700;">
-                        une entreprise à la fois.
-                    </span>"
-                </p>
-            </div>
-
-            {{-- Réseaux sociaux + contact rapide --}}
-            <div style="text-align:right;">
-                <p style="color:rgba(255,255,255,.6); font-size:12px;
-                           font-weight:700; text-transform:uppercase;
-                           letter-spacing:1px; margin-bottom:14px;">
-                    Suivez-nous
-                </p>
-                <div style="display:flex; gap:10px; justify-content:flex-end;
-                            margin-bottom:20px;">
-                    @foreach([
-                        ['label'=>'f',  'bg'=>'#1877F2'],
-                        ['label'=>'in', 'bg'=>'#0A66C2'],
-                        ['label'=>'𝕏',  'bg'=>'#000000'],
-                    ] as $social)
-                    <a href="#"
-                       style="width:38px; height:38px; background:{{ $social['bg'] }};
-                              border-radius:10px; display:flex; align-items:center;
-                              justify-content:center; color:white; font-weight:700;
-                              font-size:14px; text-decoration:none; transition:all .2s;">
-                        {{ $social['label'] }}
-                    </a>
-                    @endforeach
-                </div>
-                <a href="tel:+22770810113"
-                   style="display:inline-flex; align-items:center; gap:8px;
-                          background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
-                          color:white; padding:10px 18px; border-radius:10px;
-                          text-decoration:none; font-size:14px; font-weight:600;">
-                    📞 +227 70810113
-                </a>
-            </div>
-        </div>
+    {{-- Vague d'entrée footer --}}
+    <div style="background:#1E388A; line-height:0;">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg"
+             preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+            <path d="M0,60 C360,0 1080,0 1440,60 L1440,60 L0,60 Z" fill="#1E388A"/>
+        </svg>
     </div>
 
-    {{-- Séparateur visible --}}
-    <div style="height:4px;
-                background:linear-gradient(90deg, #1E388A, #F97316, #1E388A);">
-    </div>
+    {{-- ═══ SECTION 1 — Fond bleu foncé ═══ --}}
+    <div style="background:linear-gradient(135deg,#152a6b 0%,#1E388A 100%); padding:56px 60px 40px;">
+        <div style="max-width:1280px; margin:0 auto;">
 
-    {{-- ═══ SECTION 2 — Fond blanc ═══ --}}
-    <div style="background:white; padding:40px 60px;">
-        <div style="max-width:1280px; margin:0 auto;
-                    display:grid; grid-template-columns:2fr 1fr 1fr;
-                    gap:40px;">
+            {{-- Ligne du haut --}}
+            <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px;">
 
-            {{-- Liens services --}}
-            <div>
-                <h4 style="font-family:'Sora',sans-serif; font-weight:800;
-                           font-size:14px; color:#1E388A;
-                           text-transform:uppercase; letter-spacing:1px;
-                           margin-bottom:16px; padding-bottom:8px;
-                           border-bottom:2px solid #F97316; display:inline-block;">
-                    Nos Services
-                </h4>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                    @foreach([
-                        'Hébergement Web & Cloud',
-                        'VPN & Interconnexion',
-                        'Développement Apps',
-                        'Cybersécurité',
-                        'ERP & Gestion',
-                        'Email Professionnel',
-                        'Support & Maintenance',
-                        'Conseil Digital',
-                    ] as $service)
-                    <a href="{{ route('services') }}"
-                       style="color:#1E388A; text-decoration:none; font-size:13px;
-                              display:flex; align-items:center; gap:6px;
-                              padding:4px 0; font-weight:500;">
-                        <span style="color:#F97316; font-size:10px;">▸</span>
-                        {{ $service }}
-                    </a>
-                    @endforeach
-                </div>
-            </div>
-
-            {{-- Navigation --}}
-            <div>
-                <h4 style="font-family:'Sora',sans-serif; font-weight:800;
-                           font-size:14px; color:#1E388A;
-                           text-transform:uppercase; letter-spacing:1px;
-                           margin-bottom:16px; padding-bottom:8px;
-                           border-bottom:2px solid #F97316; display:inline-block;">
-                    Navigation
-                </h4>
-                <div style="display:flex; flex-direction:column; gap:8px;">
-                    @foreach([
-                        ['route'=>'home',     'label'=>'Accueil'],
-                        ['route'=>'services', 'label'=>'Nos Services'],
-                        ['route'=>'vpn',      'label'=>'VPN & Agences'],
-                        ['route'=>'about',    'label'=>'À propos'],
-                        ['route'=>'contact',  'label'=>'Contact'],
-                    ] as $link)
-                    <a href="{{ route($link['route']) }}"
-                       style="color:#1E388A; text-decoration:none; font-size:13px;
-                              display:flex; align-items:center; gap:6px; font-weight:500;">
-                        <span style="color:#F97316; font-size:10px;">▸</span>
-                        {{ $link['label'] }}
-                    </a>
-                    @endforeach
-                </div>
-            </div>
-
-            {{-- Contact --}}
-            <div>
-                <h4 style="font-family:'Sora',sans-serif; font-weight:800;
-                           font-size:14px; color:#1E388A;
-                           text-transform:uppercase; letter-spacing:1px;
-                           margin-bottom:16px; padding-bottom:8px;
-                           border-bottom:2px solid #F97316; display:inline-block;">
-                    Contact
-                </h4>
-                <div style="display:flex; flex-direction:column; gap:12px;">
-                    @foreach([
-                        ['icon'=>'📍','value'=>'Niamey, Niger'],
-                        ['icon'=>'📞','value'=>'+227 70810113'],
-                        ['icon'=>'✉', 'value'=>'admin-dsc@digitsahelcloud.com'],
-                        ['icon'=>'🌐','value'=>'www.digitsahelcloud.com'],
-                    ] as $info)
-                    <div style="display:flex; align-items:flex-start; gap:8px;">
-                        <span style="font-size:14px;">{{ $info['icon'] }}</span>
-                        <span style="color:#1E388A; font-size:13px; line-height:1.5; font-weight:500;">
-                            {{ $info['value'] }}
+                {{-- Logo + description --}}
+                <div>
+                    <p style="font-family:'Sora',sans-serif; font-size:24px;
+                               font-weight:800; margin-bottom:12px;">
+                        <span style="color:white;">Digit</span>
+                        <span style="color:#F97316;">Sahel</span>
+                        <span style="color:white;">Cloud</span>
+                    </p>
+                    <p style="color:rgba(255,255,255,.65); font-size:14px; line-height:1.8; margin-bottom:20px;">
+                        Votre partenaire IT de confiance au Sahel —
+                        expertise locale certifiée, support en français 24/7
+                        et solutions adaptées aux réalités du Niger.
+                    </p>
+                    {{-- Badge --}}
+                    <div style="display:inline-flex; align-items:center; gap:8px;
+                                background:rgba(249,115,22,.15); border:1px solid rgba(249,115,22,.3);
+                                border-radius:50px; padding:8px 16px;">
+                        <span style="width:8px; height:8px; border-radius:50%;
+                                     background:#22c55e; box-shadow:0 0 6px #22c55e;
+                                     display:inline-block;"></span>
+                        <span style="color:#F97316; font-weight:700; font-size:12px;">
+                            🇳🇪 MSP Local — Niamey, Niger
                         </span>
                     </div>
-                    @endforeach
+                </div>
+
+                {{-- Nos Services --}}
+                <div>
+                    <h4 style="font-family:'Sora',sans-serif; font-weight:800;
+                               font-size:13px; color:white;
+                               text-transform:uppercase; letter-spacing:1.5px;
+                               margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+                        <span style="width:24px; height:2px; background:#F97316; display:inline-block;"></span>
+                        Nos Services
+                    </h4>
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        @foreach([
+                            'Hébergement Web & Cloud',
+                            'Interconnexion & Agences',
+                            'Infrastructure Cloud',
+                            'Cybersécurité',
+                            'ERP & Gestion',
+                            'Email Professionnel',
+                            'Support & Maintenance',
+                            'Conseil & Digital',
+                        ] as $service)
+                        <a href="{{ route('services') }}"
+                           style="color:rgba(255,255,255,.6); text-decoration:none; font-size:13px;
+                                  display:flex; align-items:center; gap:8px; transition:all .2s;"
+                           onmouseover="this.style.color='#F97316';this.style.paddingLeft='4px'"
+                           onmouseout="this.style.color='rgba(255,255,255,.6)';this.style.paddingLeft='0'">
+                            <span style="color:#F97316; font-size:8px;">▶</span>
+                            {{ $service }}
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- Navigation --}}
+                <div>
+                    <h4 style="font-family:'Sora',sans-serif; font-weight:800;
+                               font-size:13px; color:white;
+                               text-transform:uppercase; letter-spacing:1.5px;
+                               margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+                        <span style="width:24px; height:2px; background:#F97316; display:inline-block;"></span>
+                        Navigation
+                    </h4>
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        @foreach([
+                            ['route'=>'home',     'label'=>'Accueil'],
+                            ['route'=>'services', 'label'=>'Nos Services'],
+                            ['route'=>'vpn',      'label'=>'Interconnexion & Réseaux'],
+                            ['route'=>'about',    'label'=>'Pourquoi Nous'],
+                            ['route'=>'contact',  'label'=>'Contact'],
+                        ] as $link)
+                        <a href="{{ route($link['route']) }}"
+                           style="color:rgba(255,255,255,.6); text-decoration:none; font-size:13px;
+                                  display:flex; align-items:center; gap:8px; transition:all .2s;"
+                           onmouseover="this.style.color='#F97316';this.style.paddingLeft='4px'"
+                           onmouseout="this.style.color='rgba(255,255,255,.6)';this.style.paddingLeft='0'">
+                            <span style="color:#F97316; font-size:8px;">▶</span>
+                            {{ $link['label'] }}
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- Contact --}}
+                <div>
+                    <h4 style="font-family:'Sora',sans-serif; font-weight:800;
+                               font-size:13px; color:white;
+                               text-transform:uppercase; letter-spacing:1.5px;
+                               margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+                        <span style="width:24px; height:2px; background:#F97316; display:inline-block;"></span>
+                        Contact
+                    </h4>
+                    <div style="display:flex; flex-direction:column; gap:14px;">
+                        @foreach([
+                            ['icon'=>'📍','value'=>'Niamey, République du Niger'],
+                            ['icon'=>'📱','value'=>'+227 70810113'],
+                            ['icon'=>'✉️','value'=>'admin-dsc@digitsahelcloud.com'],
+                            ['icon'=>'🌐','value'=>'digitsahelcloud.com'],
+                        ] as $info)
+                        <div style="display:flex; align-items:flex-start; gap:10px;">
+                            <span style="font-size:15px; flex-shrink:0;">{{ $info['icon'] }}</span>
+                            <span style="color:rgba(255,255,255,.65); font-size:13px; line-height:1.5;">
+                                {{ $info['value'] }}
+                            </span>
+                        </div>
+                        @endforeach
+                    </div>
+
+                    {{-- Réseaux sociaux --}}
+                    <div style="margin-top:24px;">
+                        <p style="color:rgba(255,255,255,.4); font-size:11px; font-weight:700;
+                                   text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">
+                            Suivez-nous
+                        </p>
+                        <div style="display:flex; gap:10px;">
+                            @foreach([
+                                ['label'=>'f',  'bg'=>'#1877F2', 'href'=>'#'],
+                                ['label'=>'in', 'bg'=>'#0A66C2', 'href'=>'#'],
+                                ['label'=>'𝕏',  'bg'=>'#000',   'href'=>'#'],
+                            ] as $s)
+                            <a href="{{ $s['href'] }}"
+                               style="width:36px; height:36px; background:{{ $s['bg'] }};
+                                      border-radius:10px; display:flex; align-items:center;
+                                      justify-content:center; color:white; font-weight:700;
+                                      font-size:13px; text-decoration:none;
+                                      transition:all .2s; box-shadow:0 4px 12px rgba(0,0,0,.2);"
+                               onmouseover="this.style.transform='translateY(-3px)'"
+                               onmouseout="this.style.transform='none'">
+                                {{ $s['label'] }}
+                            </a>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        {{-- Copyright --}}
-        <div style="max-width:1280px; margin:32px auto 0;
-                    padding-top:20px; border-top:1px solid #e2e8f0;
-                    display:flex; justify-content:space-between; align-items:center;">
-            {{-- Copyright --}}
-            <p style="font-size:13px;">
-                <span style="color:#6B7280;">©{{ date('Y') }} </span>
-                <span style="color:#1E388A; font-weight:700;">Digit</span>
-                <span style="color:#F97316; font-weight:700;">Sahel</span>
-                <span style="color:#1E388A; font-weight:700;">Cloud</span>
-                <span style="color:#6B7280;">. Tous droits réservés.</span>
-            </p>
+            {{-- Séparateur --}}
+            <div style="height:1px; background:rgba(255,255,255,.1); margin-bottom:28px;"></div>
+
+            {{-- Slogan + copyright --}}
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+                <p style="color:rgba(255,255,255,.5); font-size:13px; font-style:italic;">
+                    "Connecter le Niger au monde digital, une organisation à la fois."
+                </p>
+                <p style="color:rgba(255,255,255,.4); font-size:12px;">
+                    ©{{ date('Y') }}
+                    <span style="color:white; font-weight:700;"> Digit</span><span style="color:#F97316; font-weight:700;">Sahel</span><span style="color:white; font-weight:700;">Cloud</span>
+                    <span style="color:rgba(255,255,255,.4);"> — Tous droits réservés.</span>
+                </p>
+            </div>
         </div>
     </div>
 
