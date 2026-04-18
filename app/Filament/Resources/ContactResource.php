@@ -309,7 +309,7 @@ class ContactResource extends Resource
                     ->label('✉️ Email')
                     ->color('primary')
                     ->icon('heroicon-o-envelope')
-                    ->url(fn(Contact $record) => "mailto:{$record->email}?subject=Re: Votre demande DigitSahelCloud — {$record->service}&body=Bonjour {$record->name},%0A%0AMerci pour votre message concernant : {$record->service}.%0A%0A")
+                    ->url(fn(Contact $record) => "https://mail.zoho.com/zm/#compose?to={$record->email}&subject=Re:%20Votre%20demande%20DigitSahelCloud")
                     ->openUrlInNewTab(),
 
                 Tables\Actions\Action::make('reply_whatsapp')

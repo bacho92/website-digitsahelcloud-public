@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Providers\Filament;
-
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -28,13 +26,11 @@ class AdminDscPanelProvider extends PanelProvider
             ->id('admin-dsc')
             ->path('admin-dsc')
             ->login()
-
             // ── Branding ──────────────────────────────────
             ->brandName('DigitSahelCloud')
             ->brandLogo(asset('images/dsc-logo.jpeg'))
-            ->brandLogoHeight('6rem')
+            ->brandLogoHeight('5rem')
             ->favicon(asset('favicon.ico'))
-
             // ── Couleurs DSC ──────────────────────────────
             ->colors([
                 'primary'   => Color::hex('#1E388A'),
@@ -44,26 +40,56 @@ class AdminDscPanelProvider extends PanelProvider
                 'warning'   => Color::Amber,
                 'info'      => Color::Sky,
             ])
+            // ── Navigation en haut ────────────────────────
+            ->topNavigation()
+            // ── CSS — supprimer espace gauche + navbar hauteur ──
+            ->renderHook(
+                'panels::head.end',
+                fn () => '<style>
+                    /* Supprimer tout espace gauche résiduel */
+                    .fi-main-ctn {
+                        padding-inline-start: 0 !important;
+                        margin-left: 0 !important;
+                    }
+                    .fi-layout {
+                        padding-left: 0 !important;
+                    }
 
-            // ── CSS personnalisé ──────────────────────────
-            ->viteTheme('resources/css/filament/admin-dsc/theme.css')
+                    /* Navbar plus haute pour s\'adapter au logo */
+                    .fi-topbar {
+                        height: 80px !important;
+                        min-height: 80px !important;
+                    }
+                    .fi-topbar nav {
+                        height: 80px !important;
+                        padding-top: 8px !important;
+                        padding-bottom: 8px !important;
+                    }
 
-            // ── Sidebar ───────────────────────────────────
-            ->sidebarCollapsibleOnDesktop()
+                    /* Logo plus grand */
+                    .fi-logo img {
+                        height: 60px !important;
+                        width: auto !important;
+                        object-fit: contain !important;
+                    }
 
+                    /* Contenu principal commence après la navbar */
+                    .fi-main {
+                        padding-top: 80px !important;
+                    }
+                </style>'
+            )
             // ── Resources & Pages ─────────────────────────
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-
-            // ── Widgets — sans AccountWidget ──────────────
+            // ── Widgets ───────────────────────────────────
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 StatsOverview::class,
             ])
-
             // ── Middleware ────────────────────────────────
             ->middleware([
                 EncryptCookies::class,
