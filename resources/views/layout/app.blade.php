@@ -6,7 +6,6 @@
 
     {{-- Google Analytics --}}
     @production
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6G7N5H4W7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -16,10 +15,8 @@
     </script>
     @endproduction
 
-    {{-- SEO Meta tags --}}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- ✅ TITRE FORMAT : Page | DigitSahelCloud --}}
+    <title>@yield('title', 'Accueil') | DigitSahelCloud</title>
 
     {{-- SEO Meta tags --}}
     <meta name="description"
@@ -54,8 +51,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon_io/favicon-16x16.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('favicon_io/apple-touch-icon.png') }}">
 
-    <title>@yield('title', 'DigitSahelCloud') — Votre Partenaire Cloud au Sahel</title>
-
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +63,6 @@
     <style>
         @media (max-width: 768px) {
 
-            /* === GLOBAL === */
             html, body {
                 overflow-x: hidden !important;
                 width: 100% !important;
@@ -87,7 +81,6 @@
             h1 { font-size: 1.8rem !important; }
             h2 { font-size: 1.5rem !important; }
 
-            /* === HERO HOME === */
             section[style*="min-height:60vh"] {
                 padding: 40px 16px !important;
                 min-height: auto !important;
@@ -99,18 +92,15 @@
                 gap: 24px !important;
             }
 
-            /* Cacher dashboard card sur mobile */
             section[style*="min-height:60vh"] > div > div > div:last-child {
                 display: none !important;
             }
 
-            /* Fix texte hero qui déborde */
             section[style*="min-height:60vh"] h1,
             section[style*="min-height:60vh"] p {
                 padding-left: 8px !important;
             }
 
-            /* === BOUTONS EN COLONNE === */
             div[style*="gap:16px; flex-wrap:wrap"] {
                 flex-direction: column !important;
             }
@@ -120,7 +110,6 @@
                 align-items: center !important;
             }
 
-            /* === TOUTES LES GRILLES → 1 COLONNE === */
             div[style*="grid-template-columns:1fr 1fr"],
             div[style*="grid-template-columns:1fr 2fr"],
             div[style*="grid-template-columns:2fr 1fr 1fr"],
@@ -131,30 +120,26 @@
                 gap: 16px !important;
             }
 
-            /* === STATS → 2 COLONNES === */
             div[style*="grid-template-columns:repeat(4,1fr)"] {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 16px !important;
             }
 
-            /* === SERVICES HOME → 2 COLONNES === */
             div[style*="grid-template-columns:repeat(4,1fr)"][style*="gap:20px"] {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
 
-            /* === SERVICES PAGE — items liste → 1 colonne === */
             div[style*="grid-template-columns:repeat(3,1fr)"][style*="gap:12px"] {
                 grid-template-columns: 1fr !important;
             }
 
-            /* === VPN SCHEMA — cacher flèches horizontales === */
             div[style*="font-size:24px"][style*="color:#F97316"] {
                 display: none !important;
             }
 
-            /* === FOOTER === */
             div[style*="padding:48px 60px"],
-            div[style*="padding:40px 60px"] {
+            div[style*="padding:40px 60px"],
+            div[style*="padding:56px 60px 0"] {
                 padding: 32px 16px !important;
             }
 
