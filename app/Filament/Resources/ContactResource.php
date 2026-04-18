@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Infolists;
 use Filament\Infolists\Infolist;
+use Filament\Notifications\Notification;
 
 class ContactResource extends Resource
 {
@@ -20,7 +21,6 @@ class ContactResource extends Resource
     protected static ?string $modelLabel = 'Message';
     protected static ?string $pluralModelLabel = 'Messages';
     protected static ?int $navigationSort = 1;
-    protected static bool $canCreate = false; // ← Désactive le bouton "New Message"
 
     public static function canCreate(): bool
     {
@@ -66,7 +66,6 @@ class ContactResource extends Resource
 
             Forms\Components\Section::make('Demande')
                 ->icon('heroicon-o-chat-bubble-left-right')
-                ->columns(2)
                 ->schema([
                     Forms\Components\TextInput::make('service')
                         ->label('Service souhaité')
@@ -80,12 +79,31 @@ class ContactResource extends Resource
                         ->columnSpanFull(),
                 ]),
 
-            Forms\Components\Section::make('Suivi')
+            Forms\Components\Section::make('Suivi & Actions')
                 ->icon('heroicon-o-check-circle')
+                ->columns(2)
                 ->schema([
+                    Forms\Components\Select::make('statut')
+                        ->label('Statut')
+                        ->options([
+                            'non_lu'    => '🔴 Non lu',
+                            'en_cours'  => '🟡 En cours de traitement',
+                            'traite'    => '🟢 Traité',
+                            'archive'   => '⚫ Archivé',
+                        ])
+                        ->default('non_lu')
+                        ->required(),
+
                     Forms\Components\Toggle::make('is_read')
                         ->label('Marqué comme lu')
                         ->helperText('Cochez une fois que vous avez traité cette demande.'),
+
+                    Forms\Components\Textarea::make('notes_internes')
+                        ->label('📝 Notes internes (privées)')
+                        ->helperText('Ces notes ne sont visibles que par vous dans le panel admin.')
+                        ->rows(4)
+                        ->columnSpanFull()
+                        ->placeholder('Ex: Client contacté le 18/04/2026 par WhatsApp. Intéressé par forfait Premium...'),
                 ]),
         ]);
     }
@@ -150,21 +168,37 @@ class ContactResource extends Resource
                         ->columnSpanFull(),
                 ]),
 
-            Infolists\Components\Section::make('Informations')
-                ->icon('heroicon-o-information-circle')
+            Infolists\Components\Section::make('Suivi')
+                ->icon('heroicon-o-check-circle')
                 ->columns(2)
                 ->schema([
+                    Infolists\Components\TextEntry::make('statut')
+                        ->label('Statut')
+                        ->formatStateUsing(fn($state) => match ($state) {
+                            'non_lu'   => '🔴 Non lu',
+                            'en_cours' => '🟡 En cours de traitement',
+                            'traite'   => '🟢 Traité',
+                            'archive'  => '⚫ Archivé',
+                            default    => '🔴 Non lu',
+                        })
+                        ->badge()
+                        ->color(fn($state) => match ($state) {
+                            'non_lu'   => 'danger',
+                            'en_cours' => 'warning',
+                            'traite'   => 'success',
+                            'archive'  => 'gray',
+                            default    => 'danger',
+                        }),
+
                     Infolists\Components\TextEntry::make('created_at')
                         ->label('Reçu le')
                         ->dateTime('d/m/Y à H:i'),
 
-                    Infolists\Components\IconEntry::make('is_read')
-                        ->label('Statut')
-                        ->boolean()
-                        ->trueIcon('heroicon-o-check-circle')
-                        ->falseIcon('heroicon-o-clock')
-                        ->trueColor('success')
-                        ->falseColor('warning'),
+                    Infolists\Components\TextEntry::make('notes_internes')
+                        ->label('📝 Notes internes')
+                        ->default('Aucune note')
+                        ->columnSpanFull()
+                        ->color('gray'),
                 ]),
         ]);
     }
@@ -213,13 +247,26 @@ class ContactResource extends Resource
                     ->label('Service')
                     ->badge()
                     ->color('primary')
+                    ->limit(30)
                     ->default('—'),
 
-                Tables\Columns\IconColumn::make('is_read')
-                    ->label('Lu')
-                    ->boolean()
-                    ->trueColor('success')
-                    ->falseColor('warning'),
+                Tables\Columns\TextColumn::make('statut')
+                    ->label('Statut')
+                    ->formatStateUsing(fn($state) => match ($state) {
+                        'non_lu'   => '🔴 Non lu',
+                        'en_cours' => '🟡 En cours',
+                        'traite'   => '🟢 Traité',
+                        'archive'  => '⚫ Archivé',
+                        default    => '🔴 Non lu',
+                    })
+                    ->badge()
+                    ->color(fn($state) => match ($state) {
+                        'non_lu'   => 'danger',
+                        'en_cours' => 'warning',
+                        'traite'   => 'success',
+                        'archive'  => 'gray',
+                        default    => 'danger',
+                    }),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Reçu le')
@@ -228,10 +275,14 @@ class ContactResource extends Resource
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
-                Tables\Filters\TernaryFilter::make('is_read')
-                    ->label('Statut lecture')
-                    ->trueLabel('Lus')
-                    ->falseLabel('Non lus'),
+                Tables\Filters\SelectFilter::make('statut')
+                    ->label('Statut')
+                    ->options([
+                        'non_lu'   => '🔴 Non lu',
+                        'en_cours' => '🟡 En cours',
+                        'traite'   => '🟢 Traité',
+                        'archive'  => '⚫ Archivé',
+                    ]),
 
                 Tables\Filters\SelectFilter::make('demandeur_type')
                     ->label('Type de demandeur')
@@ -254,12 +305,47 @@ class ContactResource extends Resource
                     ]),
             ])
             ->actions([
+                Tables\Actions\Action::make('reply_email')
+                    ->label('✉️ Email')
+                    ->color('primary')
+                    ->icon('heroicon-o-envelope')
+                    ->url(fn(Contact $record) => "mailto:{$record->email}?subject=Re: Votre demande DigitSahelCloud — {$record->service}&body=Bonjour {$record->name},%0A%0AMerci pour votre message concernant : {$record->service}.%0A%0A")
+                    ->openUrlInNewTab(),
+
+                Tables\Actions\Action::make('reply_whatsapp')
+                    ->label('💬 WhatsApp')
+                    ->color('success')
+                    ->icon('heroicon-o-chat-bubble-left')
+                    ->url(fn(Contact $record) => "https://wa.me/" . preg_replace('/[^0-9]/', '', $record->phone) . "?text=Bonjour%20{$record->name},%20merci%20pour%20votre%20message%20concernant%20{$record->service}.%20Je%20suis%20Bachir%20de%20DigitSahelCloud.")
+                    ->openUrlInNewTab(),
+
+                Tables\Actions\Action::make('marquer_traite')
+                    ->label('🟢 Traité')
+                    ->color('success')
+                    ->icon('heroicon-o-check-circle')
+                    ->requiresConfirmation()
+                    ->modalHeading('Marquer comme traité ?')
+                    ->modalDescription('Ce message sera marqué comme traité.')
+                    ->action(function (Contact $record) {
+                        $record->update(['statut' => 'traite', 'is_read' => true]);
+                        Notification::make()
+                            ->title('✅ Message marqué comme traité')
+                            ->success()
+                            ->send();
+                    })
+                    ->visible(fn(Contact $record) => $record->statut !== 'traite'),
+
                 Tables\Actions\ViewAction::make()->label('Voir'),
                 Tables\Actions\EditAction::make()->label('Modifier'),
                 Tables\Actions\DeleteAction::make()->label('Supprimer'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\BulkAction::make('marquer_lus')
+                        ->label('✅ Marquer comme traités')
+                        ->icon('heroicon-o-check-circle')
+                        ->action(fn($records) => $records->each->update(['statut' => 'traite', 'is_read' => true]))
+                        ->requiresConfirmation(),
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
@@ -269,17 +355,18 @@ class ContactResource extends Resource
     {
         return [
             'index' => Pages\ListContacts::route('/'),
+            'view'  => Pages\ViewContact::route('/{record}'),
             'edit'  => Pages\EditContact::route('/{record}/edit'),
         ];
     }
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::where('is_read', false)->count() ?: null;
+        return static::getModel()::where('statut', 'non_lu')->count() ?: null;
     }
 
     public static function getNavigationBadgeColor(): ?string
     {
-        return 'warning';
+        return 'danger';
     }
 }

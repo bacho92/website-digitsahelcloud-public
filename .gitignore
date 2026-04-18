@@ -17,3 +17,5 @@ yarn-error.log
 *.sqlite
 .vagrant/
 docker/ssl/
+
+.github/workflows/deploy.yml
