@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'À propos — DigitSahelCloud')
+@section('title', 'Pourquoi Nous')
 @section('description', 'DigitSahelCloud — Premier MSP nigérien fondé par un ingénieur certifié AWS, Azure, CCNP et Kubernetes. Notre histoire, notre vision et notre engagement pour la souveraineté numérique du Niger.')
 @section('og_title', 'À propos — DigitSahelCloud')
 @section('og_description', 'Notre histoire, vision, mission et équipe — DigitSahelCloud, MSP local à Niamey, Niger.')

@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Interconnexion & Réseaux — DigitSahelCloud')
+@section('title', 'Interconnexion & Réseaux')
 @section('description', 'Interconnectez vos agences, bureaux et équipes distantes via des tunnels chiffrés AES-256 — déployés, sécurisés et monitorés 24/7 par notre équipe locale à Niamey.')
 @section('og_title', 'Interconnexion & Réseaux — DigitSahelCloud')
 @section('og_description', 'Solution VPN sécurisée managée par DigitSahelCloud — chiffrement AES-256, haute disponibilité, support local 24/7')

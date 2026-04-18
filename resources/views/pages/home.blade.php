@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Accueil — DigitSahelCloud')
+@section('title', 'Accueil')
 @section('description', 'DigitSahelCloud - Premier MSP nigérien. Solutions cloud, réseaux, cybersécurité et transformation digitale pour entreprises, institutions et ONG au Niger.')
 @section('og_title', 'DigitSahelCloud - Fini les Solutions IT Hors de Portée')
 @section('og_description', 'MSP local au Niger - Cloud, Réseaux, Cybersécurité, Digital. Support local 24/7 en français.')
