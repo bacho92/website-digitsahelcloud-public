@@ -72,7 +72,7 @@
                              background:rgba(249,115,22,.15); border:1px solid rgba(249,115,22,.3);
                              color:#F97316; padding:6px 16px; border-radius:50px;
                              font-size:13px; font-weight:600; margin-bottom:24px;">
-                    🇳🇪 MSP Local — Niamey, Niger
+                    🇳🇪 MSP Local — Niger & Afrique de l'Ouest
                 </span>
 
                 <h1 style="font-family:'Sora',sans-serif; font-size:clamp(2rem,4vw,3.4rem);
@@ -83,9 +83,9 @@
 
                 <p style="color:rgba(255,255,255,.8); font-size:1.05rem; line-height:1.8;
                            margin-bottom:36px; max-width:520px;">
-                    DigitSahelCloud connecte les entreprises, institutions et ONG nigériennes
-                    aux meilleures technologies cloud mondiales — expertise locale certifiée,
-                    support en français 24/7 et tarifs adaptés aux réalités du Sahel.
+                    Votre organisation accède enfin à une IT fiable, sécurisée et maintenue en permanence,
+                    expertise locale certifiée, support en français 24/7 et tarifs adaptés aux réalités
+                    du Niger et de l'Afrique de l'Ouest.
                 </p>
 
                 <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px;">
@@ -223,7 +223,7 @@
 
         <div class="stats-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
             @foreach([
-                ['target'=>95000, 'suffix'=>'+', 'label'=>'Organisations à digitaliser', 'svg'=>'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>'],
+                ['target'=>6000,  'suffix'=>'+', 'label'=>'Organisations à digitaliser au Niger', 'svg'=>'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>'],
                 ['target'=>12,    'suffix'=>'+', 'label'=>'Services managés',            'svg'=>'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 010 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 010-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>'],
                 ['target'=>100,   'suffix'=>'%', 'label'=>'Support local en français',  'svg'=>'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>'],
                 ['target'=>1,     'suffix'=>'',  'label'=>'Interlocuteur unique',        'svg'=>'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>'],
@@ -259,8 +259,8 @@
                 Des Solutions pour Chaque Besoin
             </h2>
             <p style="color:#6B7280; font-size:1.05rem; max-width:600px; margin:0 auto; line-height:1.7;">
-                Un seul partenaire pour tous vos besoins IT —
-                de l'infrastructure cloud à la transformation digitale.
+                Un seul partenaire pour tous vos besoins IT de l'infrastructure 
+                cloud à la transformation digitale.
             </p>
         </div>
 
@@ -416,7 +416,7 @@
             </h2>
             <p style="color:rgba(255,255,255,.75); font-size:1rem; line-height:1.8; margin-bottom:28px;">
                 Reliez votre siège, vos agences et vos équipes distantes via des tunnels
-                chiffrés AES-256 — déployés, sécurisés et monitorés 24/7 par notre
+                chiffrés AES-256, déployés, sécurisés et monitorés 24/7 par notre
                 équipe locale à Niamey. Idéal pour banques, ONG, administrations
                 et groupes d'entreprises au Niger.
             </p>
@@ -448,7 +448,7 @@
                         padding:14px; border-radius:10px; text-align:center; margin-bottom:12px;">
                 <div style="font-weight:600; color:white; font-size:14px;">🔐 DigitSahelCloud NOC</div>
                 <div style="font-size:12px; color:rgba(255,255,255,.5); margin-top:4px;">
-                    Monitoring & Supervision 24/7 — Niamey
+                    Monitoring & Supervision 24/7, Niamey
                 </div>
             </div>
             <div style="text-align:center; color:rgba(255,255,255,.4); font-size:13px; margin:8px 0;">
@@ -480,19 +480,19 @@
         <div style="text-align:center; margin-bottom:56px;">
             <span class="section-tag">Nos secteurs cibles</span>
             <h2 class="section-title" style="text-align:center;">
-                Secteurs que nous servons
+                Votre Secteur, Nos Solutions
             </h2>
             <p style="color:#6B7280; font-size:1rem; max-width:560px; margin:0 auto; line-height:1.7;">
-                DigitSahelCloud accompagne tous types d'organisations nigériennes
-                dans leur transformation numérique — quel que soit votre secteur.
+                Chaque organisation a ses contraintes IT. DigitSahelCloud connaît les besoins
+                spécifiques de votre secteur et adapte ses services en conséquence.
             </p>
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
             @foreach([
                 [
-                    'image' => 'https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=600&q=90',
-                    'alt'   => 'Banque microfinance Niger transactions sécurisées',
+                    'image' => 'https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=600&q=90',
+                    'alt'   => 'Banque microfinance agence financière Niger',
                     'icon'  => '🏦',
                     'title' => 'Banques & Microfinance',
                     'desc'  => 'Interconnexion sécurisée des agences, protection des transactions et conformité réglementaire.',
@@ -509,8 +509,8 @@
                     'tags'  => ['Interconnexion campus','Applications métier','Support IT'],
                 ],
                 [
-                    'image' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=90',
-                    'alt'   => 'Administration publique gouvernement numérique Niger',
+                    'image' => 'https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=600&q=90',
+                    'alt'   => 'Administration publique bureau gouvernement Niger',
                     'icon'  => '🏛️',
                     'title' => 'Administrations Publiques',
                     'desc'  => 'Infrastructure sécurisée pour les données sensibles de l\'État et la connexion des services.',
@@ -527,8 +527,8 @@
                     'tags'  => ['Bureaux terrain','Cloud léger','Email pro'],
                 ],
                 [
-                    'image' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=90',
-                    'alt'   => 'Commerce distribution réseau magasins Niger',
+                    'image' => 'https://images.unsplash.com/photo-1601598851547-4302969d0614?w=600&q=90',
+                    'alt'   => 'Commerce distribution magasin stock caisse Niger',
                     'icon'  => '🏪',
                     'title' => 'Commerce & Distribution',
                     'desc'  => 'Synchronisation des stocks et des caisses entre points de vente — vision centralisée en temps réel.',
@@ -536,8 +536,8 @@
                     'tags'  => ['ERP & Gestion','VPN agences','Support 24/7'],
                 ],
                 [
-                    'image' => 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=90',
-                    'alt'   => 'Santé hôpital clinique système informatique Niger',
+                    'image' => 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&q=90',
+                    'alt'   => 'Santé hôpital médecin soins Niger clinique',
                     'icon'  => '🏥',
                     'title' => 'Santé & Hôpitaux',
                     'desc'  => 'Partage sécurisé des données médicales entre établissements et accès aux plateformes nationales.',
