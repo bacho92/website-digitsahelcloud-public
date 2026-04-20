@@ -1,9 +1,9 @@
 @extends('layout.app')
 
 @section('title', 'Pourquoi Nous')
-@section('description', 'DigitSahelCloud — Premier MSP nigérien fondé par un ingénieur certifié AWS, Azure, CCNP et Kubernetes. Notre histoire, notre vision et notre engagement pour la souveraineté numérique du Niger.')
-@section('og_title', 'À propos — DigitSahelCloud')
-@section('og_description', 'Notre histoire, vision, mission et équipe — DigitSahelCloud, MSP local à Niamey, Niger.')
+@section('description', 'DigitSahelCloud Premier MSP nigérien fondé par une équipe certifiée AWS, Azure, CCNP et Kubernetes. Notre histoire, notre vision et notre engagement pour la souveraineté numérique du Niger.')
+@section('og_title', 'À propos DigitSahelCloud')
+@section('og_description', 'Notre histoire, vision, mission et équipe DigitSahelCloud, MSP local à Niamey, Niger.')
 
 @section('content')
 
@@ -45,9 +45,9 @@
         </h1>
         <p style="color:rgba(255,255,255,.75); font-size:1.05rem; line-height:1.8;
                    max-width:650px; margin:0 auto;">
-            DigitSahelCloud est né d'une conviction simple — les entreprises,
-            institutions et ONG nigériennes méritent des solutions IT locales,
-            fiables et à la hauteur des standards internationaux.
+            DigitSahelCloud est né d'une conviction simple les entreprises,
+            institutions et ONG méritent des solutions IT locales,
+            fiables, scalables, sécurisés et à la hauteur des standards internationaux.
         </p>
     </div>
 
@@ -82,7 +82,7 @@
                             "Digitaliser le Sahel, une organisation à la fois."
                         </p>
                         <p style="color:rgba(255,255,255,.8); font-size:12px; margin:4px 0 0;">
-                            — Bachir Abourahamane, Fondateur & CEO
+                            — Fondateur, DigitSahelCloud
                         </p>
                     </div>
                 </div>
@@ -98,16 +98,16 @@
                     Pourquoi DigitSahelCloud ?
                 </h2>
                 <p style="color:#374151; font-size:15px; line-height:1.8; margin-bottom:16px;">
-                    Fort de plus de 5 ans d'expérience en ingénierie réseaux et systèmes, supervision 
-                    NOC et infrastructure cloud au Niger et à l'international, notre fondateur a
-                    constaté un manque criant : les organisations nigériennes n'avaient pas accès
-                    à des services IT managés locaux, fiables et abordables.
+                    Au Niger, les organisations font face à un paradoxe : des besoins IT croissants,
+                    mais peu de partenaires locaux capables d'y répondre avec rigueur et fiabilité.
+                    Les solutions internationales sont hors de portée linguistiquement, culturellement
+                    et financièrement.
                 </p>
                 <p style="color:#374151; font-size:15px; line-height:1.8; margin-bottom:24px;">
-                    DigitSahelCloud est la réponse à ce besoin — un MSP 100% nigérien,
-                    avec une expertise certifiée AWS, Azure, Kubernetes et CCNP,
-                    capable de rivaliser avec les meilleures solutions internationales
-                    tout en restant ancré dans les réalités locales.
+                    DigitSahelCloud existe pour combler ce vide avec une expertise certifiée
+                    AWS, Azure, Kubernetes, Microsoft et CCNP, délivrée localement, en français,
+                    à des tarifs adaptés aux réalités sahéliennes.
+                    Vos systèmes sont entre les mains d'une équipe qui connaît votre contexte.
                 </p>
                 <div style="display:flex; gap:16px; flex-wrap:wrap;">
                     @foreach(['Fondé en 2026','Basé à Niamey','Certifié AWS & Azure','CCNP & Kubernetes'] as $tag)
@@ -154,10 +154,9 @@
                     Notre Vision
                 </h3>
                 <p style="color:#374151; font-size:15px; line-height:1.8;">
-                    Devenir le premier fournisseur de services cloud et d'infrastructure
-                    digitale de confiance au Niger et dans la sous-région sahélienne —
-                    en contribuant activement à la souveraineté numérique de l'Afrique
-                    de l'Ouest.
+                    Devenir le premier fournisseur de services cloud managé et d'infrastructure
+                    digitale de confiance au Niger et dans la sous-région sahélienne
+                    en contribuant activement à la souveraineté numérique de l'Afrique.
                 </p>
             </div>
 
@@ -171,8 +170,8 @@
                     Notre Mission
                 </h3>
                 <p style="color:#374151; font-size:15px; line-height:1.8;">
-                    Accompagner la digitalisation des organisations nigériennes avec
-                    des solutions fiables, souveraines et adaptées au contexte local —
+                    Accompagner la digitalisation des organisations avec
+                    des solutions fiables, sécurisés et escalables, souveraines et adaptées au contexte local
                     à des tarifs accessibles, avec un support de proximité
                     disponible 24/7 en français.
                 </p>
@@ -202,7 +201,7 @@
                 ['icon'=>'🔒','color'=>'#DC2626','title'=>'Confiance',
                  'desc'=>'Sécurité et fiabilité au cœur de chaque solution. SLA contractuel, chiffrement bout-en-bout et conformité aux standards internationaux.'],
                 ['icon'=>'💡','color'=>'#F97316','title'=>'Innovation',
-                 'desc'=>'Les meilleures technologies mondiales — cloud, DevOps, IA — adaptées aux réalités et contraintes du contexte nigérien.'],
+                 'desc'=>'Les meilleures technologies mondiales cloud, DevOps, IA adaptées aux réalités et contraintes du contexte nigérien.'],
                 ['icon'=>'🌍','color'=>'#059669','title'=>'Impact',
                  'desc'=>'Chaque projet contribue au développement numérique du Niger et à la souveraineté digitale de l\'Afrique de l\'Ouest.'],
             ] as $val)
@@ -266,7 +265,7 @@
                 </div>
                 <h3 style="font-family:'Sora',sans-serif; font-weight:800;
                            color:#1E388A; font-size:1.2rem; margin-bottom:4px;">
-                    Bachir Abourahamane
+                    Bachir Abourahamane Aboubacar
                 </h3>
                 <p style="color:#F97316; font-weight:700; font-size:13px;
                            margin-bottom:4px; text-transform:uppercase; letter-spacing:.5px;">
@@ -323,11 +322,12 @@
             <div>
                 <h3 style="font-family:'Sora',sans-serif; font-weight:800;
                            color:#1E388A; font-size:1.4rem; margin-bottom:8px;">
-                    Une expertise rare au Niger
+                    Une ingénierie IT ancrée dans les réalités du Niger
                 </h3>
                 <p style="color:#6B7280; font-size:14px; margin-bottom:28px; line-height:1.7;">
-                    Plus de 5 ans d'expérience dans des environnements IT critiques —
-                    télécoms, ONG, institutions publiques et privées — au Niger et à l'international.
+                    Plus de 5 ans d'immersion dans des environnements IT critiques
+                    télécoms, ONG internationales, institutions publiques et privées. 
+                    Une pratique terrain qui se traduit directement en fiabilité pour vos systèmes.
                 </p>
 
                 {{-- Expériences --}}
@@ -437,7 +437,7 @@
                 Vers la Souveraineté Numérique
             </h2>
             <p style="color:#6B7280; font-size:1rem; max-width:560px; margin:0 auto; line-height:1.7;">
-                Une vision claire et une trajectoire assumée —
+                Une vision claire et une trajectoire assumée
                 de l'infrastructure internationale à l'infrastructure souveraine au Niger.
             </p>
         </div>
@@ -450,7 +450,7 @@
                     'status' => 'Actif',
                     'icon'   => '☁️',
                     'title'  => 'Infrastructure internationale',
-                    'desc'   => 'Hébergement sur infrastructures cloud certifiées haute disponibilité. Support local en français, tarifs adaptés au marché nigérien.',
+                    'desc'   => 'Vos services IT opérationnels immédiatement hébergés sur des infrastructures cloud certifiées haute disponibilité, supervisés 24/7 depuis Niamey, en français, à des tarifs adaptés au marché nigérien.',
                     'items'  => ['Cloud international certifié','Support 24/7 local Niamey','12+ services managés','Équipe ingénieurs certifiés'],
                 ],
                 [
@@ -468,7 +468,7 @@
                     'status' => 'Vision',
                     'icon'   => '🖥️',
                     'title'  => 'Datacenter souverain DSC',
-                    'desc'   => 'Datacenter souverain DigitSahelCloud au Niger — infrastructure 100% locale, certifiée et accessible à toutes les organisations de la sous-région.',
+                    'desc'   => 'Datacenter souverain DigitSahelCloud au Niger infrastructure 100% locale, certifiée et accessible à toutes les organisations de la sous-région.',
                     'items'  => ['Datacenter souverain Niger','Certification internationale','Expansion sous-régionale','Souveraineté numérique totale'],
                 ],
             ] as $road)
